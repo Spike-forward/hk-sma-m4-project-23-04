@@ -6,3 +6,5 @@ WSP Project due Nov 15, 2023
 1. What are you guys progression these two days?
    
 2. Let me know whether you have received this file from you git repository or not. Thanks a lot. 
+   
+3. Could you guys tell me why I can't git add a directory upload to the git hub? Why I only can git add my "md" file?
