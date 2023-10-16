@@ -11,7 +11,7 @@
                     <mxGeometry x="720" y="60" width="80" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="xEqCbCpqzMmOeNpdaJ_V-4" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="59" y="130" width="710" height="160" as="geometry"/>
+                    <mxGeometry x="59" y="130" width="710" height="220" as="geometry"/>
                 </mxCell>
                 <mxCell id="xEqCbCpqzMmOeNpdaJ_V-7" value="Btn(酒店)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="210" y="140" width="100" height="30" as="geometry"/>
@@ -37,11 +37,17 @@
                 <mxCell id="xEqCbCpqzMmOeNpdaJ_V-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="xEqCbCpqzMmOeNpdaJ_V-4" target="xEqCbCpqzMmOeNpdaJ_V-4" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="ALOZ-e7BVdD-AdIb4WJP-1" value="Member Register" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="ALOZ-e7BVdD-AdIb4WJP-1" value="Member Register" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="220" y="40" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="ALOZ-e7BVdD-AdIb4WJP-2" value="Register Btn" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="ALOZ-e7BVdD-AdIb4WJP-2" value="Register Btn" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="720" y="10" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="最近溜覽項目 (generate data from user's input data)" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="260" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="用家意見分享 (Users Comments)" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="260" width="120" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
