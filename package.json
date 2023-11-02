@@ -1,0 +1,22 @@
+{
+  "name": "hk-sma-m4-project-23-04",
+  "version": "1.0.0",
+  "description": "WSP Project due Nov 15, 2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spike-forward/hk-sma-m4-project-23-04.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spike-forward/hk-sma-m4-project-23-04/issues"
+  },
+  "homepage": "https://github.com/Spike-forward/hk-sma-m4-project-23-04#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
