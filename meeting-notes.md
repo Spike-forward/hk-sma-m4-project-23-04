@@ -1,27 +1,41 @@
 # 2023-11-30
 
-
 ## Feature Comment from Jason
-1. Nav bar 要有User Login & Create Account 
+1. Nav bar 要有Studio Owner Login 
+
 2. homepage 頭一頁係推介得幾個random 出，下面有一粒button可以跳去另外一個page去瀏覽全部studios
+> need one more wireframe
+
 3. 擺埋timeblock feature ，filter out booked time 
-4. search bar (if timeblock can not do, then do search bar) 
+> show all the timeslot half hour for each
+> only when the booking request is approved, then the timeslot will be unavailable
+
+4. filter (if timeblock can not do, then do filter ) 
+> District Filter 
 
 ## Feature priority 
+Will do
 1. 嘗試做time block feature 唔同嘅timeslot比人book左就唔可以再book （timeslot validation/checking) 
-2. Search bar 
+2. filter
+
+Depend on time
 3. Forget password 
+
+Not this time
 4. User login (maybe not, coz no time)
 5. 之後嘅project可能需要一個 admin panel to approve 
+
 
 ## ERD 
 1. Equipment 同Studio 係many to many 嘅relationship （studio id & equipement id mapping）
 有先儲，冇就唔洗儲 一條record 一個equipment，JS loop over 
 
-2. studio booking opening and closing 時間有冇，幾多點到幾多點，user只可以係呢個time range揀
-3. 每次user fill in start and end time 要係select box 打曬 時間去揀  
-4. table name all lowercase & snake case ，全部有s就s
-5. Logic how to select photo for cover page on homepage -> 拎住第一張upload嘅相片，further 有時間可以configure 揀邊張做cover photo
+2. studio booking opening and closing 時間有冇，幾多點到幾多點，user只可以係呢個time range揀 
+3. table name all lowercase & snake case ，全部有s就s
+4. Logic how to select photo for cover page on homepage -> 拎住第一張upload嘅相片，further 有時間可以configure 揀邊張做cover photo
+5. timeblock 
+> calendar: could book the nearest 30 days booking
+? Do we need to link with calendar to do the time block feature?
 
 ## Route Handle 
 - only one HTML admin page 
@@ -32,6 +46,7 @@
 ## 分工
 - 每個人front end 同backend都會有
 - 分唔同嘅page去做 (owner dashboard)
+
 
 ## Booking Request Page
 - Booking Request 同 Studio Information係2頁黎 
