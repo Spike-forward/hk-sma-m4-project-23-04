@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e" pages="7">
     <diagram name="Business Flow Chart" id="CO8c-XYk3vwqfi9IgGvG">
-        <mxGraphModel dx="1913" dy="1960" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2177" dy="2178" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -494,14 +494,14 @@
                 <mxCell id="p8MQolTtLwwHdf918yn9-202" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;2. Studio Owner Panel&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontSize=15;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="661" y="1470" width="261.5" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="E_bKtkKwgNFDJzQ8ZGBn-41" value="social login" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="E_bKtkKwgNFDJzQ8ZGBn-41" value="social login" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="125" y="1160" width="120" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
     </diagram>
     <diagram id="98K31oUmz1QbkBrKbpwi" name="HomePage">
-        <mxGraphModel dx="861" dy="387" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1451" dy="719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -575,7 +575,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="8OXty5Gxbtx6MMyfNj04" name="Booking">
-        <mxGraphModel dx="1913" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1536" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -756,7 +756,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="aZtuD4K5TN96j41q5_B5" name="Studio Owner Panel (Request)">
-        <mxGraphModel dx="861" dy="387" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1306" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -809,7 +809,7 @@
         </mxGraphModel>
     </diagram>
     <diagram name="Studio Owner Panel (Studio Info)" id="CpLTrJA6UWhpIvvV0qsS">
-        <mxGraphModel dx="1148" dy="516" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1306" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="K5TGRKnv54WYdZr27yc3-0"/>
                 <mxCell id="K5TGRKnv54WYdZr27yc3-1" parent="K5TGRKnv54WYdZr27yc3-0"/>
