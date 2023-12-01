@@ -1,4 +1,10 @@
-# 2023-11-30
+# 2023-12-02 Meeting With Jason
+
+## Question
+1. Time will only be blocked when the payment is done and the booking status is approved. Does this make sense as we do not have a timeslot release feature.
+
+
+# 2023-11-30 Meeting With Jason
 
 ## Feature Comment from Jason
 1. Nav bar 要有Studio Owner Login 
