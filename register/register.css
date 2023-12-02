@@ -1,21 +1,16 @@
-body{
-    overflow: hidden;  
-  
-}
 
 .container{
     margin: 0;
 }
 
-
 /* Style for Login Image */
 .login-image{
     padding:0;
+    min-height:100vh;
 }
 
-
 .login-image img{
-    height:100vh;
+    height:100%;
     max-width: 100%;
     object-fit: cover;
 }
@@ -103,26 +98,37 @@ input[type="submit"]{
         padding:50px;
     }
 
-    .row{
-        
+    .row{ 
         border-radius: 10px;
         overflow: hidden;
     }
 
+    .login-image{
+        padding:0;
+        min-height:100%;
+        width:100vw;
+    }
     
     .login-image img{
-        height:25vh;
-        width: 100vw; 
-        object-fit: cover;
+        height:20vh;
+        min-width: 100%;
     }
+
 
     .login h1{
         margin-top:10px;
-    }
-
-    
+    }  
     
 }
 
 
+@media only screen and (max-height: 400px){
+    .container-fluid{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        transform: translate(0%, 0%);
+        padding:50px;
+    }
 
+}
