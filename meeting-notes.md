@@ -1,8 +1,43 @@
 # 2023-12-02 Meeting With Jason
 
-## Question
-1. Time will only be blocked when the payment is done and the booking status is approved. Does this make sense as we do not have a timeslot release feature.
+## General
+做Either time block / filter 都可以，要排次序
 
+## Time block Feature
+1. 幾時time會變unavailable？
+> pending的時候已經個timeslot已經會變unavailable。所有Reject status嘅booking嘅時間都會release返。例如如果個user3日冇俾錢，個owner可以將個status又waiting for payment變為reject，咁個timeslot可以release返出黎
+
+> for loop 入面 再set condition
+
+2. 時間單位
+> 最好set一個鐘頭為單位，唔好用30mins
+
+3. Calendar Library by Jason
+> calendar library https://fullcalendar.io/
+> easier way: drop down menu
+
+4. ERD  
+> studio 個到table 寫埋opening closing時間係幾多 一小時為一個單位
+> Booking timeslot，邊d人book左邊個日子，同埋邊個時間 
+> 其實呢個feature都唔容易
+
+## Cover Photo
+>  覺得呢個位置可能會比較難，如果做唔到，可以randomly pick一張都可以
+
+## Booking Confirmation Page 
+> 直接轉頁，成頁reload一次 window.location 或者pop 一個alert嘅格，可以比去click success 跳返去
+> 點都有個地方跳返homepage 
+> alert -> https://sweetalert2.github.io/ 
+
+## login
+> either local login or social login (only local login is okay)
+
+## 分工 / workflow
+> 先寫 一個共同 express server database 
+> by page 分工 而每個page都有各自 API routes 
+> Either Backend or frontend 先都可以
+> backend 寫API先
+> frontend 寫先嘅話可以整個dummy UI
 
 # 2023-11-30 Meeting With Jason
 
