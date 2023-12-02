@@ -1,0 +1,128 @@
+body{
+    overflow: hidden;  
+  
+}
+
+.container{
+    margin: 0;
+}
+
+
+/* Style for Login Image */
+.login-image{
+    padding:0;
+}
+
+
+.login-image img{
+    height:100vh;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* Style for Login Form */
+
+.login{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#F7F7F7;
+}
+
+#register-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#register-form h2{
+    font-weight: 200;
+    font-size: 25px;
+}
+
+#register-form p{
+    font-weight: 200;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+
+input:not([type="submit"]){
+    display: block;
+    width:100%;
+    margin-top:10px;
+    height:50px;
+    border:rgba(128, 128, 128, 0.193) solid 1px;
+    border-radius: 5px;
+    padding:10px;
+}
+
+input#first_name{
+    margin-top:7px;
+}
+
+input[type="submit"]{
+    margin:20px 0px;
+    border-radius: 5px;
+    border:rgba(128, 128, 128, 0.193) solid 2px;
+    padding:5px;
+    background-color: #6A76D8;
+    color:white;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Style for Form Validation */
+.input-control.success input{
+    border-color:#09c372;
+}
+
+.input-control.error input{
+    border-color:#ff3860;
+}
+
+.input-control .error.active{
+    color:#ff3860;
+    font-size:10px;
+    height:12px;
+    margin-bottom:15px;
+}
+
+/* Responsive for Mobile */
+@media only screen and (max-width: 575px){
+    body{
+        background-color:#dbdada;
+    }
+
+    .container-fluid{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding:50px;
+    }
+
+    .row{
+        
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    
+    .login-image img{
+        height:25vh;
+        width: 100vw; 
+        object-fit: cover;
+    }
+
+    .login h1{
+        margin-top:10px;
+    }
+
+    
+    
+}
+
+
+
