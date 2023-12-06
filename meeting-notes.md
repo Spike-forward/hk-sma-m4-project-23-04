@@ -1,3 +1,22 @@
+# 2023-12-06 Meeting With Jason
+
+1. Front End
+- share same nav bar 
+- 要擺多幾條嘅Record要睇返會唔會走位
+- 統一UI
+
+2. Back End
+- 駁API拎data
+- database要insert定幾個record，盡量唔好比null，要作真係現實嘅data
+
+3. task.tecky.io
+- update backlog, todo 
+
+4. Timeline
+- 14/12 next meeting
+- 15/12 or 16/12 another meeting
+- 17/12 basic flow for presentation 
+
 # 2023-12-02 Meeting With Jason
 
 ## General
