@@ -1,0 +1,82 @@
+/* Basis */
+#profile{
+    align-items: center;
+    margin: 20px auto 40px;
+}
+
+#profile #owner-icon{
+    display: flex;
+    justify-content: center;
+}
+
+#message{
+    text-align: center;
+    padding: 30px 0;
+}
+
+#panel{
+    display: flex;
+}
+
+#panel #menu {
+    padding: 0;
+    text-align: center;
+}
+
+#panel #menu .nav-item a{
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+#panel #studio{
+    padding: 20px 0 20px 30px;
+    position: relative;
+    z-index: -2;
+    background-color: #B6D3DB;
+    border-left: 1px solid #000;
+}
+
+#panel #studio #yoga-bg{
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: -200px;
+    left: 15%;
+    width: auto;
+}
+
+#panel #studio .info{
+    width: 60%;
+    margin: auto;
+}
+
+#panel #studio .info h3{
+    padding-bottom: 20px;
+}
+
+#panel #studio .info > form .form-floating{
+    margin-bottom: 20px;
+}
+
+#panel #studio .info > form .equipments label{
+    margin-right: 20px;
+}
+
+#panel #studio .info > form .equipments input[type="checkbox"]{
+    margin-right: 2px;
+}
+
+#panel #studio .info > form button[type="submit"]{
+    margin-top: 50px;
+}
+
+
+/* Status */
+.chosen{
+    color: #000 !important;
+}
+
+#panel #menu > div:hover{
+    color: #000;
+    cursor: pointer;
+}
