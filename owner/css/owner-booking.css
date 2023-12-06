@@ -1,0 +1,109 @@
+/* Basis */
+#profile{
+    align-items: center;
+    margin: 20px auto 40px;
+}
+
+#profile #owner-icon{
+    display: flex;
+    justify-content: center;
+}
+
+#message{
+    text-align: center;
+    padding: 30px 0;
+}
+
+#panel{
+    display: flex;
+}
+
+#panel #menu {
+    padding: 0;
+    text-align: center;
+}
+
+#panel #menu .nav-item a{
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+#panel #requests{
+    padding: 30px 0;
+    min-height: 650px;
+    position: relative;
+    z-index: -2;
+    background-color: #B6D3DB;
+    border-left: 1px solid #000;
+}
+
+#panel #requests #yoga-bg{
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: -200px;
+    left: 15%;
+    width: auto;
+}
+
+#panel #requests ul{
+    padding-left: 30px;
+}
+
+#panel #requests .tab-content{
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+#panel #requests .tab-content .request{
+    width: 90%;
+    margin: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* #panel #requests .status{
+    margin: 0 80px;
+    border-bottom: #000 1px solid;
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+/* #panel #requests .status > div, #panel #menu .nav-item{
+    color: #dfe2e8;
+} */
+
+/* #panel #requests .filtered-requests{
+    margin-left: 30px;
+    
+}
+
+#panel #requests .filtered-requests .request{
+    width: 90%;
+    margin: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#panel #requests .filtered-requests .request .info{
+    flex: 2;
+}
+
+#panel #requests .filtered-requests .request .info .brief{
+    display: flex;
+}
+
+#panel #requests .filtered-requests button{
+    height: auto;
+} */
+
+/* Status */
+.chosen{
+    color: #000 !important;
+}
+
+#panel #requests .status > div:hover, #panel #menu > div:hover{
+    color: #000;
+    cursor: pointer;
+}
+
