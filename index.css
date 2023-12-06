@@ -8,8 +8,6 @@
     .dropbtn {
         background-color: #4c6daf;
         color: white;
-        display: flex;
-        justify-content: center;
         padding: 16px;
         font-size: 16px;
         border: none;
@@ -20,6 +18,8 @@
     .dropdown {
         position: relative;
         display: inline-block;
+        display: flex;
+        justify-content: center;
     }
     /* Dropdown Content (Hidden by Default) */
     
