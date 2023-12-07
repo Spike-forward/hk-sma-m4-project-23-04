@@ -24,7 +24,7 @@ li.nav-item-right:hover{
 
 /* Carousel Banner */
 .carousel-inner > .carousel-item > img {
-    height:350px;
+    height:450px;
     width:100vw;
     object-fit: cover;
 }

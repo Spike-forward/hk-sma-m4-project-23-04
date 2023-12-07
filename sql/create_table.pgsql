@@ -27,6 +27,36 @@ CREATE TABLE studio(
 );
 
 
+CREATE TABLE equipment(
+    id SERIAL primary key,
+    items VARCHAR(255) not null
+);
+
+CREATE TABLE studio_equipment(
+    id SERIAL primary key,
+    studio_id integer,
+    FOREIGN KEY (studio_id) REFERENCES studio(id),
+    equipment_id integer,
+    FOREIGN KEY (equipment_id) REFERENCES equipment(id)
+);
+
+CREATE TABLE studio_photo(
+    id SERIAL primary key,
+    filename VARCHAR(255) not null,
+    cover_photo boolean not null,
+    studio_id integer,
+    FOREIGN KEY (studio_id) REFERENCES studio(id),
+    created_at timestamp not null,
+    updated_at timestamp not null
+);
+
+
+
+
+
+
+
+
 
 
 

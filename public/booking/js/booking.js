@@ -1,13 +1,23 @@
 window.onload = async () => {
   const searchParams = new URLSearchParams(location.search);
   const studioID = searchParams.get('studio_id');
-  const res = await fetch(`/booking?studio_id=${studioID}`);
+  const studioInfoRes = await fetch(`/booking/studio-info?studio_id=${studioID}`);
+  const studioEquRes = await fetch(`/booking/studio-equipment?studio_id=${studioID}`);
+  const studioImageRes = await fetch(`/booking/studio-image?studio_id=${studioID}`);
+  
+  const studioInfo = await studioInfoRes.json()
+  const studioEqu = await studioEquRes.json()
+  const studioImages = await studioImageRes.json()
 
-  const studioInfo = await res.json()
 
-  const studioProfile = document.querySelector(".studio-profile")
+  const studioProfileDiv = document.querySelector(".studio-profile")
+  const studioDescriptionDiv = document.querySelector(".input-description")
+  const studioPriceDiv = document.querySelector(".input-price")
+  const studioEquDiv = document.querySelector(".input-equipment ul")
+  const carouselIndicators = document.querySelector(".carousel-indicators")
+  const carouselInner = document.querySelector(".carousel-inner")
 
-  studioProfile.innerHTML = `
+  studioProfileDiv.innerHTML = `
     <div class="icon">
       <img src="../uploads/studio_icon/${studioInfo.icon}" alt="">
     </div>
@@ -20,8 +30,47 @@ window.onload = async () => {
       <p class="address">${studioInfo.address} </p>
     </div>`
 
+  studioDescriptionDiv.innerHTML = `${studioInfo.description}`
+  studioPriceDiv.innerHTML = `${studioInfo.price}`
+
+  for(let equ of studioEqu ){
+    studioEquDiv.innerHTML += `<li>${equ.items}</li>`
+  }
+
+  for(let image in studioImages ){
+    carouselIndicators.innerHTML += `<button type="button" data-bs-target="#carouselExampleIndicators" class="" data-bs-slide-to="${image}" aria-label="Slide ${image}"></button>`
+  }
+  const firstIndicator = document.querySelector('.carousel-indicators button:first-child')
+ 
+  firstIndicator.classList.add('active')
   
 
+
+  for(let image of studioImages){
+
+    if(!image.cover_photo){
+      carouselInner.innerHTML += `<div class="carousel-item">
+      <img src="../uploads/studio_photo/${image.filename}" class="d-block w-100" alt="${image.filename}">
+      </div>`
+
+
+      
+    }else{
+      carouselInner.innerHTML += `<div class="carousel-item active">
+      <img src="../uploads/studio_photo/${image.filename}" class="d-block w-100" alt="${image.filename}">
+      </div>`
+    }
+    
+  }
+
+  
+
+
+
+
+
+
+//calendar and time 
     const timePicker = document.querySelector(".time-picker");
     const timeDisplay = document.querySelector(".time");
     const dateDisplay = document.querySelector(".date");
