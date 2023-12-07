@@ -1,6 +1,30 @@
-const timePicker = document.querySelector(".time-picker");
-const timeDisplay = document.querySelector(".time");
-const dateDisplay = document.querySelector(".date");
+window.onload = async () => {
+  const searchParams = new URLSearchParams(location.search);
+  const studioID = searchParams.get('studio_id');
+  const res = await fetch(`/booking?studio_id=${studioID}`);
+
+  const studioInfo = await res.json()
+
+  const studioProfile = document.querySelector(".studio-profile")
+
+  studioProfile.innerHTML = `
+    <div class="icon">
+      <img src="../uploads/studio_icon/${studioInfo.icon}" alt="">
+    </div>
+
+    <div class="basic-info">
+      <div class="name-district">
+          <h3 class="name">${studioInfo.name}</h3>
+          <p class="district">${studioInfo.district}</p>
+      </div>
+      <p class="address">${studioInfo.address} </p>
+    </div>`
+
+  
+
+    const timePicker = document.querySelector(".time-picker");
+    const timeDisplay = document.querySelector(".time");
+    const dateDisplay = document.querySelector(".date");
 
 function loadTimePicker(start_time, end_time, interval) {
   timePicker.innerHTML = "";
@@ -84,4 +108,6 @@ function setDayActive(selectedDay) {
       day.classList.remove("date-selected");
     }
   });
+}
+
 }

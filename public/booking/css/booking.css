@@ -1,3 +1,27 @@
+/* nav bar */
+
+.navbar-brand img{
+    height:40px;
+}
+
+#navbarSupportedContent li{
+    list-style-type:none;
+}
+
+li.nav-item-right{
+    background-color: #6A76D8;
+    padding:10px;
+    color:white;
+    border-radius: 10px;
+    font-weight:bold;
+}
+
+li.nav-item-right:hover{
+    background-color: #2e356c;
+    cursor: pointer;
+}
+
+
 /* Carousel Banner */
 .carousel-inner > .carousel-item > img {
     height:350px;
@@ -142,8 +166,16 @@ input[type="submit"]{
 
 
 @media only screen and (max-width: 991px){
-
-
+    
+    li.nav-item-right{
+        font-size: 12px;
+        width:140px;
+        background-color: #6A76D8;
+        padding:10px;
+        color:white;
+        border-radius: 10px;
+        font-weight:bold;
+    }
 
     .bottom-cta{
         z-index:2;
