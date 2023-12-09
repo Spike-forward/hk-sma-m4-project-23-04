@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 import {Client} from 'pg';
 import dotenv from 'dotenv';
 import { bookingRoutes } from './routes/bookingRoutes';
@@ -23,9 +23,9 @@ app.use('/booking',bookingRoutes)
 
 
 //Route Handlers
-app.get('/', function (req: Request, res: Response) {
-  res.end('Hello World')
-})
+// app.get('/', function (req: Request, res: Response) {
+//   res.end('Hello World')
+// })
 
 app.use(express.static('public'))
 
