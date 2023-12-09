@@ -110,8 +110,6 @@ p.address{
 
 /* Booking */
 
-
-
 .time-picker{
     margin:20px 0px 20px 0;
     display:flex;
@@ -121,10 +119,15 @@ p.address{
 
 .timeslot{
     text-align: center;
-    width:200px;
-    background-color: rgb(46, 255, 71);
-    padding:5px 10px;
+    width:130px;
+    border:solid 2px;
+    padding:5px 2px;
     border-radius:10px;
+}
+
+.unavailable{
+    background-color:rgb(158, 158, 158);
+    color:rgb(115, 115, 115);
 }
 
 
@@ -132,17 +135,36 @@ p.address{
     background-color: rgba(46, 60, 255, 0.326);
 }
 
-span.display-selected-time{
-    margin-right:10px;
+
+.time{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.booking-date-time span.date-selected, .booking-date-time span.display-selected-time{
+    border: thin solid rgba(46, 60, 255, 0.797);
+    background-color: rgba(46, 164, 255, 0.326);
+    border-radius: 10px;
+    padding:5px;
+    margin:5px;
+    font-size: small;
 }
 
 .time-selected{
-    border: thin solid rgba(46, 60, 255, 0.797);
+    border: thin solid rgba(46, 60, 255, 0.326);
     background-color: rgba(46, 60, 255, 0.326);
+    
 }
 
 .booking-date-time{
-    margin-bottom: 20px;
+    margin:50px 0 20px 0;
+
+}
+
+.personal-information{
+    margin:30px 0 20px 0;
 }
 
 .form-floating{

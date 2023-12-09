@@ -50,6 +50,38 @@ CREATE TABLE studio_photo(
     updated_at timestamp not null
 );
 
+CREATE TABLE booking(
+    id SERIAL primary key,
+    name VARCHAR(255) not null,
+    date DATE not null,
+    contact_no VARCHAR(255) not null,
+    remarks text,
+    studio_id integer,
+    FOREIGN KEY (studio_id) REFERENCES studio(id),
+    created_at timestamp not null,
+    updated_at timestamp not null
+);
+
+CREATE TABLE booking_timeslot(
+    id SERIAL primary key,
+    start_time time not null,
+    end_time time not null,
+    booking_id integer,
+    FOREIGN KEY (booking_id) REFERENCES booking(id)
+);
+
+CREATE TABLE booking_status(
+    id SERIAL primary key,
+    status VARCHAR(255) not null,
+    booking_id integer,
+    FOREIGN KEY (booking_id) REFERENCES booking(id),
+    created_at timestamp not null,
+    updated_at timestamp not null
+);
+
+
+
+
 
 
 
