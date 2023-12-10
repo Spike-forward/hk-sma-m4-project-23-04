@@ -23,7 +23,7 @@ document
         const errorDiv = document.querySelectorAll(".error")
 
         if(res.status === 200){
-            window.location.href = "/protected/admin.html"
+            window.location.href = "/admin.html"
         }else{
             errorDiv.forEach((field)=>{
                 field.classList.add("active")

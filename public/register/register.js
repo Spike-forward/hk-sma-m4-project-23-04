@@ -11,7 +11,7 @@ document
     .querySelector("#register-form")
     .addEventListener('submit', async(event) => {
         event.preventDefault();
-    // validateInputs();
+        validateInputs();
 
         const form = event.target;
 
@@ -36,7 +36,16 @@ document
 
     const result = await res.json()
 
-    console.log(result)
+    const emailErrorContainer = document.querySelector(".input-control-email .error")
+
+    if(res.status=== 200){
+        window.location.href = "/admin.html"
+    }else{
+        emailErrorContainer.classList.add('active')
+        emailErrorContainer.innerText = `${result.message}`
+    }
+
+   
 
 
 
