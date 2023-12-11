@@ -1,9 +1,14 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
+import expressSession from 'express-session'
 import {Client} from 'pg';
 import dotenv from 'dotenv';
+import path from 'path';
+import { isLoggedIn } from './guard';
 import { bookingRoutes } from './routes/bookingRoutes';
 import { ownerBookingRoutes } from './routes/ownerBookingRoutes';
 import { ownerStudioRoutes } from './routes/ownerStudioRoutes';
+import { loginRoutes } from './routes/loginRoutes';
+import { registerRoutes } from './routes/registerRoutes';
 
 const app = express()
 app.use(express.urlencoded({ extended: true })) 
@@ -20,16 +25,39 @@ export const client = new Client({
 
 client.connect();
 
-app.use('/booking', bookingRoutes)
-app.use('/owner-booking', ownerBookingRoutes)
-app.use('/owner-studio', ownerStudioRoutes)
+//set up session
+app.use(
+	expressSession({
+		secret: 'wsp',
+		resave: true,
+		saveUninitialized: true
+	})
+)
+
+//session interface
+declare module 'express-session' {
+	export interface SessionData {
+		owner?: string
+		owner_id?: number
+	}
+}
+
+app.use('/booking',bookingRoutes)
+
+
 
 //Route Handlers
-app.get('/', function (req: Request, res: Response) {
-  res.end('Hello World')
-})
+
 
 app.use(express.static('public'))
+
+app.use(isLoggedIn, express.static('protected'))
+
+
+app.use((req, res) => {
+	res.status(404)
+	res.sendFile(path.resolve('public', '404.html'))
+})
 
 
 //Port Listener

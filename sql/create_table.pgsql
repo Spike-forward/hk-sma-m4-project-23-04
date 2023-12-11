@@ -4,8 +4,8 @@ CREATE TABLE owner(
     last_name VARCHAR(255) not null,
     email VARCHAR(255) not null,
     password VARCHAR(255) not null,
-    created_at timestamp not null,
-    updated_at timestamp not null
+    created_at timestamp DEFAULT NOW() not null,
+    updated_at timestamp DEFAULT NOW() not null
 );
 
 
@@ -22,8 +22,8 @@ CREATE TABLE studio(
     description text not null,
     owner_id integer,
     FOREIGN KEY (owner_id) REFERENCES owner(id),
-    created_at timestamp not null,
-    updated_at timestamp not null
+    created_at timestamp DEFAULT NOW() not null,
+    updated_at timestamp DEFAULT NOW() not null
 );
 
 
@@ -46,8 +46,8 @@ CREATE TABLE studio_photo(
     cover_photo boolean not null,
     studio_id integer,
     FOREIGN KEY (studio_id) REFERENCES studio(id),
-    created_at timestamp not null,
-    updated_at timestamp not null
+    created_at timestamp DEFAULT NOW() not null,
+    updated_at timestamp DEFAULT NOW() not null
 );
 
 CREATE TABLE booking(
@@ -58,8 +58,8 @@ CREATE TABLE booking(
     remarks text,
     studio_id integer,
     FOREIGN KEY (studio_id) REFERENCES studio(id),
-    created_at timestamp not null,
-    updated_at timestamp not null
+    created_at timestamp DEFAULT NOW() not null,
+    updated_at timestamp DEFAULT NOW() not null
 );
 
 CREATE TABLE booking_timeslot(
@@ -75,8 +75,8 @@ CREATE TABLE booking_status(
     status VARCHAR(255) not null,
     booking_id integer,
     FOREIGN KEY (booking_id) REFERENCES booking(id),
-    created_at timestamp not null,
-    updated_at timestamp not null
+    created_at timestamp DEFAULT NOW() not null,
+    updated_at timestamp DEFAULT NOW() not null
 );
 
 

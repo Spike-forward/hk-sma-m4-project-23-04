@@ -11,6 +11,8 @@ bookingRoutes.get('/studio-equipment',getStudioEquipment)
 bookingRoutes.get('/studio-image',getStudioImage)
 bookingRoutes.get('/studio-open-duration',getStudioOpenDuration)
 bookingRoutes.get('/booked-date-time',getBookedDateTime)
+bookingRoutes.post('/',postBooking)
+
 
 
 
@@ -37,7 +39,6 @@ async function getStudioImage(req:Request, res:Response){
     res.json(studioInfo)
 }
 
-
 async function getStudioOpenDuration(req:Request, res:Response){
     const studioID = parseInt(req.query.studio_id as string)
     const result = await client.query(`SELECT open_time,close_time FROM studio WHERE id = $1`,[studioID])
@@ -46,7 +47,6 @@ async function getStudioOpenDuration(req:Request, res:Response){
     result.rows[0].close_time = parseInt(result.rows[0].close_time.split(':')[0])
     res.json(studioInfo)
 }
-
 
 async function getBookedDateTime(req:Request, res:Response){
     const studioID = parseInt(req.query.studio_id as string)
@@ -66,10 +66,36 @@ async function getBookedDateTime(req:Request, res:Response){
         info.date = moment(info.date).format("YYYY-MM-DD")
     }
 
-    console.log(studioInfo)
-
     res.json(studioInfo)
 }
+
+async function postBooking(req:Request, res:Response){
+    const { studioID, date, time, name, contact,remarks } = req.body
+    console.log(studioID, date, time, name, contact,remarks)
+    const bookingResult = await client.query(`INSERT INTO booking (name,date,contact_no,remarks,studio_id,created_at,updated_at) 
+                        VALUES ($1,$2,$3,$4,$5,now(),now()) RETURNING id`,[name,date,contact,remarks,studioID])
+
+    const bookingID = bookingResult.rows[0].id
+
+    for(let t of time ){
+        console.log(time)
+        await client.query(`INSERT INTO booking_timeslot (start_time,end_time,booking_id) 
+                        VALUES ($1,$2,$3)`,[t.start_time,t.end_time,bookingID])
+    }
+
+    await client.query(`INSERT INTO booking_status (status,booking_id,created_at,updated_at) 
+                        VALUES ($1,$2,now(),now())`,["pending",bookingID])
+
+
+    res.json({message:"success"})
+}
+
+
+
+
+
+
+
 
 
 

@@ -38,6 +38,7 @@ window.onload = async () => {
       </div>
       <p class="address">${studioInfo.address} </p>
     </div>`
+
   //Description
   studioDescriptionDiv.innerHTML = `${studioInfo.description}`
   studioPriceDiv.innerHTML = `${studioInfo.price}`
@@ -128,6 +129,40 @@ window.onload = async () => {
   });
   }
 
+  document
+  .querySelector("#booking-form")
+  .addEventListener('submit',async function(event){
+    event.preventDefault();
+    const form = event.target
+    const formObject = {
+      studioID: studioID,
+      date: document.querySelector('.date span.date-selected').innerText,
+      time: getTime(),
+      name: form.name.value,
+      contact: form.whatsapp.value,
+      remarks: form.remarks.value
+    }
+
+
+    if(formObject["time"].length === 0){
+      alert("please pick a time")
+    }else{
+      const res = await fetch('/booking',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(formObject)
+      });
+
+      const result = await res.json()
+    if(result.message === "success"){
+      window.location.href = "booking-success.html"
+    }
+    }
+
+  })
+
 }
 
 
@@ -194,5 +229,19 @@ function loadTimePicker(start_time, end_time, interval, date,booked_date_time) {
 function addDays(date, days) {
   date.setDate(date.getDate() + days);
     return date;
+}
+
+
+function getTime (){
+  let timeArray = []
+  const displayedSelectedTime = document.querySelectorAll(".time span.display-selected-time");
+
+  displayedSelectedTime.forEach((timeslot)=>{
+    timeArray.push({
+      "start_time":`${timeslot.getAttribute("data-booking-time")}:00`,
+      "end_time":`${parseInt(timeslot.getAttribute("data-booking-time"))+1}:00`
+  })
+})
+return timeArray
 }
 
