@@ -38,6 +38,12 @@ window.onload = async () => {
         ${studioInfo.description}
         </textarea>
         <label for="description">Description</label>`
+
+    // switch (studioInfo.district){
+    //     case "Yuen Long":
+    //         document.querySelector('#district option[selected]').removeAttribute('selected')
+    //         document.querySelector("#district option[value='Yuen Long']").
+    // }
     // <div class="form-floating">
     //     <select required class="form-select" id="district" aria-label="District label select">
     //     <option selected disabled>Choose the district of your studio</option>

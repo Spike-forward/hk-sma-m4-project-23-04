@@ -42,14 +42,15 @@ declare module 'express-session' {
 	}
 }
 
-app.use('/booking',bookingRoutes)
-
-
-
 //Route Handlers
-
-
 app.use(express.static('public'))
+app.use('/booking',bookingRoutes)
+app.use('/login',loginRoutes)
+app.use('/register',registerRoutes)
+app.use('/owner-booking', ownerBookingRoutes)
+app.use('/owner-studio', ownerStudioRoutes)
+
+
 
 app.use(isLoggedIn, express.static('protected'))
 
