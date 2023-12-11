@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express'
 import {Client} from 'pg';
 import dotenv from 'dotenv';
 import { bookingRoutes } from './routes/bookingRoutes';
+import { ownerBookingRoutes } from './routes/ownerBookingRoutes';
+import { ownerStudioRoutes } from './routes/ownerStudioRoutes';
 
 const app = express()
 app.use(express.urlencoded({ extended: true })) 
@@ -18,9 +20,9 @@ export const client = new Client({
 
 client.connect();
 
-app.use('/booking',bookingRoutes)
-
-
+app.use('/booking', bookingRoutes)
+app.use('/owner-booking', ownerBookingRoutes)
+app.use('/owner-studio', ownerStudioRoutes)
 
 //Route Handlers
 app.get('/', function (req: Request, res: Response) {
