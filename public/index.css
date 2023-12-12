@@ -1,11 +1,36 @@
-    .banner>img {
-        height: 350px;
-        width: 100vw;
-        object-fit: cover;
-    }
+    /* nav bar */
+
+.navbar-brand img{
+    height:40px;
+}
+
+#navbarSupportedContent li{
+    list-style-type:none;
+}
+
+li.nav-item-right{
+    background-color: #6A76D8;
+    padding:10px;
+    color:white;
+    border-radius: 10px;
+    font-weight:bold;
+}
+
+li.nav-item-right:hover{
+    background-color: #2e356c;
+    cursor: pointer;
+}
+    
+/* Banner */
+.banner > img {
+    height:450px;
+    width:100vw;
+    object-fit: cover;
+}
+
     /* Style The Dropdown Button */
     
-    .dropbtn {
+    #dropbtn {
         background-color: #4c6daf;
         color: white;
         padding: 16px;
@@ -15,6 +40,8 @@
     }
     /* The container <div> - needed to position the dropdown content */
     
+
+
     .dropdown {
         position: relative;
         display: inline-block;
