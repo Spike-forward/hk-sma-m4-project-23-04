@@ -47,8 +47,8 @@ app.use(express.static('public'))
 app.use('/booking',bookingRoutes)
 app.use('/login',loginRoutes)
 app.use('/register',registerRoutes)
-app.use('/owner-booking', ownerBookingRoutes)
-app.use('/owner-studio', ownerStudioRoutes)
+app.use('/owner-booking', isLoggedIn, ownerBookingRoutes)
+app.use('/owner-studio', isLoggedIn, ownerStudioRoutes)
 
 
 

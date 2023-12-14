@@ -1,7 +1,3 @@
-// import {formatISO} from 'date-fns/formatISO'
-// const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'date' })
-// console.log(result)
-
 window.onload = loadPage()
 
 async function loadPage() {
@@ -22,9 +18,7 @@ async function loadPage() {
     const studioPaymentReq = document.querySelector('#payment-tab-pane')
     const studioApprovedReq = document.querySelector('#approved-tab-pane')
     const studioRejectedReq = document.querySelector('#rejected-tab-pane')
-    const PendingReqAccept = document.querySelectorAll('.pendingAccept')
-    const PendingReqReject = document.querySelectorAll('.pendingReject')
-    const PaymentReqConfirm = document.querySelectorAll('.paymentConfirm')
+    
 
     //Display Content
         //Owner Profile
@@ -32,6 +26,9 @@ async function loadPage() {
     ownerNameDiv.innerHTML = `<h2>Hi, ${ownerName.first_name} ${ownerName.last_name}!</h2>`
 
         //Booking Requests
+    studioPendingReq.innerHTML = ``
+    studioPaymentReq.innerHTML = ``
+    studioApprovedReq.innerHTML = ``
     for (let request of studioRequests){
         if (request.status === 'pending'){
             studioPendingReq.innerHTML += 
@@ -108,7 +105,12 @@ async function loadPage() {
             </div>`
         }
     }
+
         //Buttons for update booking status
+    const PendingReqAccept = document.querySelectorAll('.pendingAccept')
+    const PendingReqReject = document.querySelectorAll('.pendingReject')
+    const PaymentReqConfirm = document.querySelectorAll('.paymentConfirm')
+    
     PendingReqAccept.forEach((req, index)=>{
         const ReqID = document.querySelectorAll('.request:has(.pendingAccept)')[index].classList[1].slice(3)
         req.addEventListener('click', async (event)=>{
@@ -120,7 +122,7 @@ async function loadPage() {
 				},
 				body: JSON.stringify({ status: 'waiting for payment' })
             })
-            await loadPage();
+            loadPage();
         })
     })
     PendingReqReject.forEach((req, index)=>{
@@ -134,7 +136,7 @@ async function loadPage() {
 				},
 				body: JSON.stringify({ status: 'rejected' })
             })
-            await loadPage();
+            loadPage();
         })
     })
     PaymentReqConfirm.forEach((req, index)=>{
@@ -148,7 +150,7 @@ async function loadPage() {
 				},
 				body: JSON.stringify({ status: 'approved' })
             })
-            await loadPage();
+            loadPage();
         })
     })
 }

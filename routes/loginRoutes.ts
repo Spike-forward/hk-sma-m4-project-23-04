@@ -12,7 +12,7 @@ async function ownerLogin(req:Request, res:Response){
 
     console.log(req.body)
 
-	const result = await client.query(`SELECT email,password FROM owner where email = $1`, [req.body.email])
+	const result = await client.query(`SELECT email, password FROM owner where email = $1`, [req.body.email])
     
 	const [owner]: Owner[] = result.rows
 
@@ -27,7 +27,7 @@ async function ownerLogin(req:Request, res:Response){
         const ownerID = ownerIDResult.rows[0].id
         req.session.owner_id = ownerID
 
-        // res.redirect('/admin.html')
+        //res.redirect('/admin.html')
         
         res.status(200).json({message:"success"})
 	}else{

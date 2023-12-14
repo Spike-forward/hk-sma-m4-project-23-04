@@ -12,6 +12,7 @@ export const isLoggedIn = (
 		console.log(req.session.owner_id)
 		next()
 	} else {
+		
 		res.status(404).sendFile(path.resolve('./public/404.html'))
 	}
 }

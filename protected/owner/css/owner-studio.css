@@ -50,6 +50,20 @@
     margin-bottom: 20px;
 }
 
+#panel #studio .info > form #photos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#panel #studio .info > form #photos > div{
+    width: 40%;
+    margin: 5px 5%;
+}
+
+#panel #studio .info > form #photos img{
+    width: 100%;
+}
+
 #panel #studio .info > form .equipments label{
     margin-right: 20px;
 }
@@ -62,13 +76,7 @@
     margin-top: 50px;
 }
 
-
 /* Status */
 .chosen{
-    color: #000 !important;
-}
-
-#panel #menu > div:hover{
-    color: #000;
-    cursor: pointer;
+    border: 1px solid #ff0000 !important;
 }
