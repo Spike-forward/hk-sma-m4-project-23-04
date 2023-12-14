@@ -2,6 +2,22 @@ window.onload = async () => {
   const searchParams = new URLSearchParams(location.search);
   const studioID = searchParams.get('studio_id');
 
+  //If no studio_id query string, then go back to homepage or all studio pages
+  if(!studioID){
+    window.location.href = "/index.html"
+    return 
+  }
+
+  //If the studio id doesn't exist in database, then go back to 404 page
+  const checkValidStudioIDRes = await fetch(`/booking/studio-id?studio_id=${studioID}`)
+  const checkValidStudioID = await checkValidStudioIDRes.json()
+
+  if(checkValidStudioID.error){
+    window.location.href = "/404/404.html"
+    return 
+  }
+
+
   //Fetch From API
   const studioInfoRes = await fetch(`/booking/studio-info?studio_id=${studioID}`);
   const studioEquRes = await fetch(`/booking/studio-equipment?studio_id=${studioID}`);
