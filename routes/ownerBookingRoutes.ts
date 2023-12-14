@@ -17,6 +17,14 @@ ownerBookingRoutes.get('/studio-icon', getStudioIcon)
 ownerBookingRoutes.get('/requests', getRequests)
 ownerBookingRoutes.put('/update-status/:id', updateReqStatus)
 
+ownerBookingRoutes.get('/logout', async(req, res)=>{
+	if (req.session) {
+		delete req.session['owner'];
+        delete req.session['owner_id'];
+	  }
+	  res.redirect('../index.html')
+})
+
 async function getOwnerName(req: Request, res: Response){
     const email = req.session.owner
     //console.log(email)
@@ -69,3 +77,5 @@ async function updateReqStatus (req: Request, res: Response){
     // }
     res.json({msg: 'request status updated!'})
 }
+
+

@@ -16,6 +16,14 @@ ownerStudioRoutes.get('/studio-info', getStudioInfo)
 ownerStudioRoutes.post('/studio-info', updateStudioInfo)
 ownerStudioRoutes.put('/cover-photo/:id', updateCoverPhoto)
 
+ownerStudioRoutes.get('/logout', async(req, res)=>{
+	if (req.session) {
+		delete req.session['owner'];
+        delete req.session['owner_id'];
+	  }
+	  res.redirect('../index.html')
+})
+
 async function getOwnerName(req: Request, res: Response){
     const email =  req.session.owner
     const request = await client.query('SELECT owner.first_name, owner.last_name FROM owner WHERE email = $1', [email])
