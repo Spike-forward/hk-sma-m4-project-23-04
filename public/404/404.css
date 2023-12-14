@@ -1,0 +1,78 @@
+/* nav bar */
+
+.navbar-brand img{
+    height:30px;
+}
+    
+#navbarSupportedContent li{
+    list-style-type:none;
+}
+    
+li.nav-item-right{
+    background-color: #6A76D8;
+    padding:10px;
+    color:white;
+    border-radius: 10px;
+    font-weight:bold;
+    transition: 1s;
+}
+
+li.nav-item-right:hover, .message button:hover{
+    background-color: #2e356c;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.message{
+    background:linear-gradient(rgba(8, 7, 7, 0.5), rgba(16, 16, 16, 0.5)),url('../images/platform-404-banner.jpeg');
+    height:80vh;
+    background-size: cover;
+    /* filter: brightness(50%); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+
+.message h1{
+   font-size: 250px;
+}
+
+.message h4{
+    margin-top: -30px;
+}
+
+.message button{
+    margin:20px 0px;
+    border-radius: 5px;
+    border:rgba(128, 128, 128, 0.193) solid 2px;
+    padding:5px 20px;
+    background-color: #6A76D8;
+    color:white;
+    font-weight: bold;
+    font-size: 12px;
+    transition: 1s;
+}
+
+
+#footer{
+    padding:7px 20px;
+    background-color: #555ea6;
+    color:white;
+}
+
+#footer img{
+    height:50px;
+    transform: translateX(-40px);
+    filter: brightness(100);
+}
+
+#footer p{
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.right-reserved{
+    margin-top: 20px;
+}
