@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { isLoggedIn } from './guard';
 import { bookingRoutes } from './routes/bookingRoutes';
+import { ownerBookingRoutes } from './routes/ownerBookingRoutes';
+import { ownerStudioRoutes } from './routes/ownerStudioRoutes';
 import { loginRoutes } from './routes/loginRoutes';
 import { registerRoutes } from './routes/registerRoutes';
 
@@ -40,12 +42,15 @@ declare module 'express-session' {
 	}
 }
 
+//Route Handlers
+app.use(express.static('public'))
 app.use('/booking',bookingRoutes)
 app.use('/login',loginRoutes)
 app.use('/register',registerRoutes)
+app.use('/owner-booking', ownerBookingRoutes)
+app.use('/owner-studio', ownerStudioRoutes)
 
 
-app.use(express.static('public'))
 
 app.use(isLoggedIn, express.static('protected'))
 

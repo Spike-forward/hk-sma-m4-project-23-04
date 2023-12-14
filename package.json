@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/Spike-forward/hk-sma-m4-project-23-04#readme",
   "dependencies": {
+    "@types/express-session": "^1.17.10",
     "@types/node": "^20.10.3",
     "bcryptjs": "^2.4.3",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",

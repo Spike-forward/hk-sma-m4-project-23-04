@@ -28,6 +28,16 @@ li.nav-item-right:hover{
     object-fit: cover;
 }
 
+
+/* Three studio Card */
+
+.container-flui{
+    display: flex;
+    justify-content: space-around;
+    padding: 5%;
+}
+
+
     /* Style The Dropdown Button */
     
     #dropbtn {

@@ -1,0 +1,59 @@
+/* Basis */
+#profile{
+    align-items: center;
+    margin: 20px auto 20px;
+}
+
+#profile #owner-icon{
+    display: flex;
+    justify-content: center;
+}
+
+#message{
+    text-align: center;
+    padding: 30px 0;
+}
+
+#panel{
+    display: flex;
+}
+
+#panel #menu {
+    padding: 0;
+    text-align: center;
+}
+
+#panel #menu .nav-item a{
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+#panel #requests{
+    padding: 30px 0;
+    min-height: 670px;
+    background-color: #B6D3DB;
+    background-image: url("../images/yoga-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid #000;
+}
+
+#panel #requests ul{
+    padding-left: 30px;
+}
+
+#panel #requests .tab-content{
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+#panel #requests .tab-content .request{
+    width: 90%;
+    margin: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#panel #requests .tab-content .request .info{
+    width: 75%;
+}
