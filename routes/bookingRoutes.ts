@@ -6,6 +6,7 @@ import moment from 'moment';
 export const bookingRoutes  = express.Router();
 
 
+bookingRoutes.get('/studio-id',checkValidStudioID)
 bookingRoutes.get('/studio-info',getStudioInfo)
 bookingRoutes.get('/studio-equipment',getStudioEquipment)
 bookingRoutes.get('/studio-image',getStudioImage)
@@ -13,14 +14,30 @@ bookingRoutes.get('/studio-open-duration',getStudioOpenDuration)
 bookingRoutes.get('/booked-date-time',getBookedDateTime)
 bookingRoutes.post('/',postBooking)
 
-
+async function checkValidStudioID(req:Request, res:Response){
+    const studioID = parseInt(req.query.studio_id as string)
+    const studioIDRes = await client.query(`SELECT id FROM studio`)
+   
+    if(studioIDRes.rows.some((studio)=> studio.id === studioID)){
+        res.json({success:"Studio ID exists in database"})
+    }else{
+        res.json({error:"Studio ID is not valid."})
+    }
+}
 
 
 async function getStudioInfo(req:Request, res:Response){
     const studioID = parseInt(req.query.studio_id as string)
-    const result = await client.query(`SELECT icon,name,district,address,description,price FROM studio WHERE id = $1`,[studioID])
-    const studioInfo = result.rows[0]
-    res.json(studioInfo)
+    const studioIDRes = await client.query(`SELECT id FROM studio`)
+   
+    if(studioIDRes.rows.some((studio)=> studio.id === studioID)){
+        const result = await client.query(`SELECT icon,name,district,address,description,price FROM studio WHERE id = $1`,[studioID])
+        const studioInfo = result.rows[0]
+        res.json(studioInfo)
+    }else{
+        res.json({error:"Studio ID is not valid."})
+    }
+
 }
 
 async function getStudioEquipment(req:Request, res:Response){
