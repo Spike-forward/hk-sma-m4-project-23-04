@@ -14,11 +14,13 @@ li.nav-item-right{
     color:white;
     border-radius: 10px;
     font-weight:bold;
+    transition: 1s;
 }
 
 li.nav-item-right:hover{
     background-color: #2e356c;
     cursor: pointer;
+    transition: 1s;
 }
 
 
@@ -77,6 +79,39 @@ p.district {
 p.address{
     margin-bottom: 0;
 }
+
+.whatsapp-link{
+    margin-top:10px;
+    width:150px;
+    height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    border-radius: 10px;
+    padding:10px;
+    text-decoration: none;
+    background-color: #108A7D;
+    transition: 1s;
+
+}
+
+.whatsapp-link img{
+    width:20px;
+    height:20px;
+}
+
+.whatsapp-link p{
+    font-size: 12px;
+    margin-bottom: 0;
+    color:white;
+}
+
+.whatsapp-link:hover{
+    background-color:#075E54 ;
+    transition: 1s;
+}
+
 
 
 .studio-details{
@@ -225,6 +260,8 @@ input[type="submit"]{
         color:white;
         cursor: pointer;
     }
+    
+    
 
     .studio-details hr{
         margin-top: 0;

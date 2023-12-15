@@ -52,8 +52,18 @@ window.onload = async () => {
           <h3 class="name">${studioInfo.name}</h3>
           <p class="district">${studioInfo.district}</p>
       </div>
+
       <p class="address">${studioInfo.address} </p>
-    </div>`
+
+      <a href="https://wa.me/852${studioInfo.contact_no}" class="whatsapp-link">
+        <img src="../images/whatsapp_logo.png">
+        <p>Contact Owner</p>
+    </a>
+    </div>
+
+
+    `
+  
 
   //Description
   studioDescriptionDiv.innerHTML = `${studioInfo.description}`
