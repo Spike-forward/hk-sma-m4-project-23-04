@@ -56,9 +56,9 @@ app.use(isLoggedIn, express.static('protected'))
 
 
 app.use((req, res) => {
-	res.status(404)
-	res.sendFile(path.resolve('public', '404.html'))
+	res.status(404).redirect('/404/404.html')
 })
+//sendFile -> redirect
 
 
 //Port Listener

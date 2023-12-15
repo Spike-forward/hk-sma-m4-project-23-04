@@ -31,7 +31,7 @@ async function getStudioInfo(req:Request, res:Response){
     const studioIDRes = await client.query(`SELECT id FROM studio`)
    
     if(studioIDRes.rows.some((studio)=> studio.id === studioID)){
-        const result = await client.query(`SELECT icon,name,district,address,description,price FROM studio WHERE id = $1`,[studioID])
+        const result = await client.query(`SELECT icon,name,district,address,description,price,contact_no FROM studio WHERE id = $1`,[studioID])
         const studioInfo = result.rows[0]
         res.json(studioInfo)
     }else{

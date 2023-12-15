@@ -1,3 +1,11 @@
+# 2023-12-14 Meeting With Jason
+
+17/12 9:00 - 9:30am Presentation
+- Duration: 10 - 12mins
+- Prepare PPT: introduce feature and workflow
+- UI Demonstration the workflow
+
+
 # 2023-12-06 Meeting With Jason
 
 1. Front End
