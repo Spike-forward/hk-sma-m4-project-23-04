@@ -31,11 +31,12 @@ li.nav-item-right:hover{
 
 /* Three studio Card */
 
-.container-flui{
+.container-fluid{
     display: flex;
     justify-content: space-around;
     padding: 5%;
 }
+
 
 
     /* Style The Dropdown Button */
