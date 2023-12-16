@@ -15,7 +15,7 @@ CREATE TABLE studio(
     district VARCHAR(255) not null,
     address text not null,
     contact_no VARCHAR(255) not null,
-    icon VARCHAR(255) not null,
+    icon VARCHAR(255) not,
     open_time time not null,
     close_time time not null,
     price text not null,
