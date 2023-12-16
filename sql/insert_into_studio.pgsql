@@ -59,7 +59,7 @@ INSERT INTO studio_equipment (studio_id,equipment_id)
 ;
 
 
-INSERT INTO studio_photo (filename, cover_photo, studio_id,created_at,updated_at)
+INSERT INTO studio_photo (filename, cover_photo, studio_id, created_at,updated_at)
     VALUES ('studio1_image1.png',TRUE,1,'2023-12-07 7:00:00','2023-12-07 7:00:00'),
             ('studio1_image2.png',FALSE,1,'2023-12-07 7:00:00','2023-12-07 7:00:00'),
             ('studio1_image3.png',FALSE,1,'2023-12-07 7:00:00','2023-12-07 7:00:00'),
@@ -76,7 +76,7 @@ INSERT INTO studio_photo (filename, cover_photo, studio_id,created_at,updated_at
             ('studio3_image4.png',FALSE,3,'2023-12-07 7:00:00','2023-12-07 7:00:00')
 ;
 
-
+ALTER TABLE studio ALTER COLUMN icon DROP not null;
 
 
 

@@ -1,9 +1,10 @@
 import express, { Request, Response } from 'express'
 import {client} from '../main';
-import formidable from 'formidable'
+import formidable, { Fields, Files } from 'formidable'
 import fs from 'fs'
 import Swal from 'sweetalert2'
-import { eventNames } from 'process';
+import { parseForm } from '../form';
+
 
 const uploadDir = './public/uploads'
 
@@ -15,13 +16,14 @@ ownerStudioRoutes.get('/studio-equip', getStudioEquip)
 ownerStudioRoutes.get('/studio-info', getStudioInfo)
 ownerStudioRoutes.post('/studio-info', updateStudioInfo)
 ownerStudioRoutes.put('/cover-photo/:id', updateCoverPhoto)
+ownerStudioRoutes.delete('/photos/:id', deletePhoto)
 
 ownerStudioRoutes.get('/logout', async(req, res)=>{
 	if (req.session) {
 		delete req.session['owner'];
         delete req.session['owner_id'];
 	  }
-	  res.redirect('../index.html')
+	res.redirect('/index.html')
 })
 
 async function getOwnerName(req: Request, res: Response){
@@ -63,7 +65,7 @@ async function getStudioInfo(req: Request, res: Response){
     }
     const photos = []
     for (let photo of request_photo.rows){
-        photos.push({"filename": photo.filename, "cover_photo": photo.cover_photo})
+        photos.push({"id": photo.id, "filename": photo.filename, "cover_photo": photo.cover_photo})
     }
 
     request_info.rows[0].equipment = equipment
@@ -87,52 +89,64 @@ async function updateStudioInfo (req: Request, res: Response){
         maxFileSize: 200 * 1024 ** 2, // the default limit is 200KB, now set to 200MB
         filter: part => part.mimetype?.startsWith('image/') || false,
         filename: (originalName, originalExt, part, form) =>{
-            
-            form.on('file', (field, file)=>{
-                // console.log(field)
-                // console.log(file)
-                if (field === "photos"){
-                    originalName = 'photo' + originalName
-                    console.log(originalName)
-                }
-                else if (field === "icon"){
-                    originalName += 'icon' + originalName
-                    console.log(originalName)
-                }
-            })
-            return `${originalName}.${originalExt}`
-            // let ext = part.mimetype?.split('/').pop()
-            // studioPhotoNo++;
-            // return `${studioName.split(' ').join('').toLowerCase()}_image${studioPhotoNo}.${ext}`
+            let fieldName = part.name
+            let ext = part.mimetype?.split('/').pop()
+            studioPhotoNo++;
+            let newFileName= "";
+            if (fieldName === "photos"){
+                newFileName = `${studioName.split(' ').join('').toLowerCase()}_image${studioPhotoNo}.${ext}`
+            } else if (fieldName === "icon"){
+                newFileName = `${studioName.split(' ').join('').toLowerCase()}_${fieldName}.${ext}`
+            }
+            return newFileName
         }
     })
-    form.parse(req, async (err, fields, files)=>{
-        if (err){
-            console.log(err);
-            res.redirect('/owner/owner-studio.html')
-        } else {
-            // await client.query('UPDATE studio SET (name, district, address, contact_no, open_time, close_time, price, description, updated_at) = ($1, $2, $3, $4, $5, $6, $7, $8, NOW()) where id = $9', 
-            // [fields.name, fields.district, fields.address, fields.contact_no, fields.openTime, fields.closeTime, fields.price, fields.description, 
-            // studioID]);
-            //await renameAndMoveFile('.\\public\\uploads')
-            //await client.query('')
-            console.log({err, fields, files})
-            res.redirect('/owner/owner-studio.html')
-        }
-    })
+    const { fields, files } = await parseForm(form, req)
+    await client.query('UPDATE studio SET (name, district, address, contact_no, open_time, close_time, price, description, icon, updated_at) = ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW()) where id = $10', 
+            [fields.name, fields.district, fields.address, fields.contact_no, fields.openTime, fields.closeTime, fields.price, fields.description, (files.icon as formidable.File)?.newFilename || (await client.query('SELECT icon FROM studio where id = $1', [studioID])).rows[0].icon, 
+            studioID]);
+
+    await client.query('DELETE FROM studio_equipment WHERE studio_id = $1', [studioID])
+    //console.log(Object.keys(fields))
+    for (let key of Object.keys(fields)){
+        //console.log(key)
+        //console.log(fields[key])
+        if (key.includes("item")){
+            const equipID = (await client.query("SELECT id FROM equipment WHERE items = $1", [fields[key]])).rows[0].id
+            await client.query('INSERT INTO studio_equipment (studio_id, equipment_id) VALUES ($1, $2)', [studioID, equipID])
+        } 
+    }
+
+    await moveFile('.\\public\\uploads')
+    // res.redirect('/owner/owner-studio.html')
+    //console.log(files.photos)
+    if (files.photos){
+        //for (let photo of (files.photos as formidable.File[])){
+            await client.query('INSERT INTO studio_photo (filename, cover_photo, studio_id, created_at, updated_at) VALUES ($1, False, $2, NOW(), NOW())', [(files.photos as formidable.File).newFilename, studioID])
+        //}
+    }
+    res.redirect('/owner/owner-studio.html')
 }
 
 async function updateCoverPhoto (req: Request, res: Response){
-    const requestID = parseInt(req.params.id)
+    const photoID = parseInt(req.params.id)
     const email =  req.session.owner
     const studioID = (await client.query('SELECT studio.id FROM owner INNER JOIN studio ON owner.id = studio.owner_id WHERE email = $1', [email])).rows[0].id
-    const request1 = await client.query('UPDATE studio_photo set cover_photo = TRUE where studio_id = $1 and filename = $2', [studioID, `studio${studioID}_image${requestID}`])
-    res.json()
+    const [request1, request2] = await Promise.all([client.query('UPDATE studio_photo set (cover_photo, updated_at) = (TRUE, NOW()) where studio_id = $1 and id = $2', [studioID, photoID]), client.query('UPDATE studio_photo set (cover_photo, updated_at) = (FALSE, NOW()) where studio_id = $1 and id != $2', [studioID, photoID])])
+
+    res.json({msg: 'cover photo updated!'})
 }
 
+async function deletePhoto (req: Request, res: Response){
+    const photoID = parseInt(req.params.id)
+    const email =  req.session.owner
+    const studioID = (await client.query('SELECT studio.id FROM owner INNER JOIN studio ON owner.id = studio.owner_id WHERE email = $1', [email])).rows[0].id
+    const request = await client.query('DELETE FROM studio_photo where studio_id = $1 and id = $2 RETURNING filename', [studioID, photoID])
+    //await fs.promises.unlink(`./public/uploads/studio_photo/${request}`)
+    res.json({msg: 'photo deleted!'})
+}
 
-
-async function renameAndMoveFile(folderPath: string){
+async function moveFile(folderPath: string){
     try{
         const files = await fs.promises.readdir(folderPath)
         const uploadedPhotos = []
@@ -150,11 +164,13 @@ async function renameAndMoveFile(folderPath: string){
         //     //console.log(Stat)
         //     return Stat.isFile()
         // })
-        uploadedPhotos.sort()
-        console.log(uploadedPhotos)
-        await fs.promises.rename(`./publc/uploads/${uploadedPhotos[uploadedPhotos.length-1]}`, `./public/uploads/studio_icon/${uploadedPhotos[uploadedPhotos.length-1].replace(`image${uploadedPhotos.length-1}`, "icon")}`);
-        for (let i = 0; i<(uploadedPhotos.length-1); i++){
-            await fs.promises.rename(`./publc/uploads/${uploadedPhotos[i]}`, `./public/uploads/studio_photo/${uploadedPhotos[i]}`)
+        //console.log(uploadedPhotos)
+        for (let file of uploadedPhotos){
+            if (file.includes("_image")){
+                await fs.promises.rename(`./public/uploads/${file}`, `./public/uploads/studio_photo/${file}`);
+            } else if (file.includes("_icon")){
+                await fs.promises.rename(`./public/uploads/${file}`, `./public/uploads/studio_icon/${file}`);
+            }
         }
     } catch (err){
         console.log(err)

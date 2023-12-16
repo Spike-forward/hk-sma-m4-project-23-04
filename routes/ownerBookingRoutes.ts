@@ -2,14 +2,7 @@ import express, { Request, Response } from 'express'
 import {client} from '../main';
 import moment from 'moment';
 
-
 export const ownerBookingRoutes  = express.Router();
-
-declare module 'express-session' {
-	interface SessionData {
-		email?: string
-	}
-}
 
 ownerBookingRoutes.get('/owner-name', getOwnerName)
 ownerBookingRoutes.get('/studio-icon', getStudioIcon)
@@ -22,7 +15,7 @@ ownerBookingRoutes.get('/logout', async(req, res)=>{
 		delete req.session['owner'];
         delete req.session['owner_id'];
 	  }
-	  res.redirect('../index.html')
+	res.redirect('/index.html')
 })
 
 async function getOwnerName(req: Request, res: Response){

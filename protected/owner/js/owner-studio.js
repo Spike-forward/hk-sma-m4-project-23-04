@@ -1,4 +1,5 @@
-window.onload = async () => {
+window.onload = loadPage()
+async function loadPage () {
     const studioIconRes = await fetch('/owner-studio/studio-icon')
     const ownerNameRes = await fetch('/owner-studio/owner-name')
     const studioInfoRes = await fetch('/owner-studio/studio-info')
@@ -20,7 +21,10 @@ window.onload = async () => {
     const studioEquipDiv = document.querySelector('.equipments')
 
     studioIconDiv.innerHTML = `<img src="../uploads/studio_icon/${studioIcon.icon}" alt="owner's icon">`
-    ownerNameDiv.innerHTML = `<h2>Hi, ${ownerName.first_name} ${ownerName.last_name}!</h2>`
+    ownerNameDiv.innerHTML = `<h2>Welcome, ${ownerName.first_name} ${ownerName.last_name}!</h2>`
+
+
+
     studioNameDiv.innerHTML = `
         <input required type="text" class="form-control" id="name" value="${studioInfo.name}" name="name">
         <label for="name">Studio Name</label>`
@@ -42,19 +46,21 @@ window.onload = async () => {
         </textarea>
         <label for="description">Description</label>`
 
-    document.querySelector('#district option[selected]').removeAttribute('selected');
-    document.querySelector(`#district option[value='${studioInfo.district}']`).selected = true;
+    document.querySelector('#district option[selected]').setAttribute('selected', false);
+    document.querySelector(`#district option[value='${studioInfo.district}']`).setAttribute('selected', true);
 
-    document.querySelector('#openTime option[selected]').removeAttribute('selected');
-    document.querySelector(`#openTime option[value='${studioInfo.open_time}']`).selected = true;
+    document.querySelector('#openTime option[selected]').setAttribute('selected', false);
+    document.querySelector(`#openTime option[value='${studioInfo.open_time}']`).setAttribute('selected', true);
 
-    document.querySelector('#closeTime option[selected]').removeAttribute('selected');
-    document.querySelector(`#closeTime option[value='${studioInfo.close_time}']`).selected = true;
+    document.querySelector('#closeTime option[selected]').setAttribute('selected', false);
+    document.querySelector(`#closeTime option[value='${studioInfo.close_time}']`).setAttribute('selected', true);
 
+    studioPhotosDiv.innerHTML = ``
     for (let photo of studioInfo.photos) {
         studioPhotosDiv.innerHTML+=`
-        <div class="">
+        <div class="photo id-${photo.id}">
             <img src="../uploads/studio_photo/${photo.filename}" alt="studio-photo">
+            <i class="bi bi-x-circle-fill"></i>
         </div>
         `
         if (photo.cover_photo){
@@ -63,17 +69,35 @@ window.onload = async () => {
     }
     
     const photos = studioPhotosDiv.querySelectorAll('img')
-    for (let photo of photos){
-        photo.addEventListener('click', (event)=>{
-            studioPhotosDiv.querySelector('.chosen').classList.toggle('chosen')
+    const deletePhotoButtons = studioPhotosDiv.querySelectorAll('.bi-x-circle-fill')
+    photos.forEach((photo, index)=>{
+        const id = document.querySelectorAll(".photo:has(img[alt='studio-photo'])")[index].classList[1].slice(3);
+        photo.addEventListener('click', async (event)=>{
+            if (studioPhotosDiv.querySelector('.chosen')){
+                studioPhotosDiv.querySelector('.chosen').classList.toggle('chosen')
+            }
             event.target.classList.toggle('chosen')
+            
+			const res = await fetch(`/owner-studio/cover-photo/${id}`, {
+				method: 'PUT',
+			})
         })
-    }
+    })
+    deletePhotoButtons.forEach((button, index)=>{
+        const id = document.querySelectorAll(".photo:has(.bi-x-circle-fill)")[index].classList[1].slice(3);
+        button.addEventListener('click', async (event)=>{
+            const res = await fetch(`/owner-studio/photos/${id}`, {
+				method: 'DELETE',
+			})
+            await loadPage();
+        })
+    })
 
+    studioEquipDiv.innerHTML = ``
     for (let item of studioEquip){
         console.log(item)
         studioEquipDiv.innerHTML += `
-        <label for="${camelCasing(item.items)}"><input type="checkbox" name="items" value="${item.items}" id="${camelCasing(item.items)}">${item.items}</label>
+        <label for="${camelCasing(item.items)}"><input type="checkbox" name="item${studioEquip.indexOf(item)+1}" value="${item.items}" id="${camelCasing(item.items)}">${item.items}</label>
         `
     }
 
@@ -82,6 +106,51 @@ window.onload = async () => {
     }
 }
 
+document
+	.querySelector('.studio-form')
+	.addEventListener('submit', async (event) => {
+		event.preventDefault() // To prevent the form from submitting synchronously
+        const serverMsg = document.querySelector(".server-msg")
+		const form = event.target
+        console.log(form)
+		//... create your form object with the form inputs
+		const formData = new FormData()
+
+		formData.append('name', form.name.value)
+        formData.append('district', form.district.value)
+        formData.append('address', form.address.value)
+        formData.append('contact_no', form.contact_no.value)
+        formData.append('openTime', form.openTime.value)
+        formData.append('closeTime', form.closeTime.value)
+        formData.append('price', form.price.value)
+        formData.append('description', form.description.value)
+        if (form.item1.checked){
+            formData.append('item1', form.item1.value)
+        }
+        if (form.item1.checked){
+            formData.append('item2', form.item2.value)
+        }
+        if (form.item1.checked){
+            formData.append('item3', form.item3.value)
+        }
+        if (form.item1.checked){
+            formData.append('item4', form.item4.value)
+        }
+
+		formData.append('icon', form.icon.files[0])
+        //for (let photo of form.photos){
+            formData.append('photos', form.photos.files[0])
+        //}
+
+		const res = await fetch('/owner-studio/studio-info', {
+			method: 'POST',
+			body: formData
+		})
+		serverMsg.innerHTML = `Studio information updated!`
+		await loadPage()
+	})
+
+// Useful function
 function camelCasing(string) {
     const string_list = string.split(' ')
     for (let i=1; i<string_list.length; i++){

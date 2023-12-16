@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+		/>
     <link rel="stylesheet" href="./css/owner-studio.css">
     <title>Owner's Studio Page</title>
 </head>
@@ -18,7 +22,6 @@
                     <h2>Hi, Owner!</h2>
                 </div>
                 <div class="announcement">
-                    <h3 class="new-booking">There <span id="">is 1</span> new booking <span id="">request</span> pending recently.</h3>
                     <h3 class="server-msg"></h3>
                 </div>
             </div>
@@ -32,7 +35,7 @@
                   <a class="nav-link active studio-info" aria-current="page" href="./owner-studio.html">Studio Information</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link logout" href="#">Logout</a>
+                  <a class="nav-link logout" href="/owner-studio/logout">Logout</a>
                 </li>
             </ul>
             <div id="studio" class="col-md-10">
@@ -115,7 +118,7 @@
                             <label for="description">Description</label>
                         </div>
                         <div class="form-floating studio-photos">
-                            <input type="file" class="form-control" name="photos" multiple>
+                            <input type="file" class="form-control" name="photos">
                             <label for="photos">Photos</label>
                         </div>
                         <div class="coverPhoto studio-coverPhoto">
