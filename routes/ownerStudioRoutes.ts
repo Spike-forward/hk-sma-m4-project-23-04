@@ -12,9 +12,14 @@ export const ownerStudioRoutes  = express.Router();
 
 ownerStudioRoutes.get('/owner-name', getOwnerName)
 ownerStudioRoutes.get('/studio-icon', getStudioIcon)
+
+
 ownerStudioRoutes.get('/studio-equip', getStudioEquip)
 ownerStudioRoutes.get('/studio-info', getStudioInfo)
-ownerStudioRoutes.post('/studio-info', updateStudioInfo)
+
+ownerStudioRoutes.get('/check-new-studio', checkNewStudio)
+ownerStudioRoutes.post('/studio-info', createEmptyStudio)
+ownerStudioRoutes.put('/studio-info', updateStudioInfo)
 ownerStudioRoutes.put('/cover-photo/:id', updateCoverPhoto)
 ownerStudioRoutes.delete('/photos/:id', deletePhoto)
 
@@ -76,11 +81,27 @@ async function getStudioInfo(req: Request, res: Response){
     res.json(result)
 }
 
-async function updateStudioInfo (req: Request, res: Response){
-    //const requestID = parseInt(req.params.id)
+async function checkNewStudio (req: Request, res: Response){
     const email =  req.session.owner
-    const studioName_ID = (await client.query('SELECT studio.id, studio.name FROM owner INNER JOIN studio ON owner.id = studio.owner_id WHERE email = $1', [email])).rows[0]
-    const [studioName, studioID]: [string, number] = [studioName_ID.name, studioName_ID.id] 
+    const ownerID = (await client.query('SELECT owner.id FROM owner WHERE email = $1', [email])).rows[0].id
+    const allStudioOwnerID = (await client.query('SELECT owner_id FROM studio')).rows
+    if (allStudioOwnerID.some((studio)=> studio.owner_id === ownerID)){
+        res.json({success:"Studio ID exists in database"})
+    } else {
+        res.json({error:"Studio ID is not valid, new studio needs to be created."})
+    }
+}
+
+async function createEmptyStudio (req: Request, res: Response){
+    const email =  req.session.owner
+    const ownerID = (await client.query('SELECT id FROM owner where email = $1', [email])).rows[0].id
+    await client.query('INSERT INTO studio (name, district, address, contact_no, icon, open_time, close_time, price, description, owner_id, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW(), NOW())', ["", "Choose the district of your studio", "", "", "user-3296.svg", "08:00:00", "24:00:00", "", "", ownerID])
+    res.json({msg: "Empty studio created!"})
+}
+
+async function updateStudioInfo (req: Request, res: Response){
+    const email =  req.session.owner
+    const studioID = (await client.query('SELECT studio.id, studio.name FROM owner INNER JOIN studio ON owner.id = studio.owner_id WHERE email = $1', [email])).rows[0].id
     let studioPhotoNo = (await client.query('SELECT filename FROM studio_photo where studio_id = $1', [studioID])).rows.length
     const form = formidable({
         uploadDir,
@@ -94,9 +115,9 @@ async function updateStudioInfo (req: Request, res: Response){
             studioPhotoNo++;
             let newFileName= "";
             if (fieldName === "photos"){
-                newFileName = `${studioName.split(' ').join('').toLowerCase()}_image${studioPhotoNo}.${ext}`
+                newFileName = `studio${studioID}_image${studioPhotoNo}.${ext}`
             } else if (fieldName === "icon"){
-                newFileName = `${studioName.split(' ').join('').toLowerCase()}_${fieldName}.${ext}`
+                newFileName = `studio${studioID}_${fieldName}.${ext}`
             }
             return newFileName
         }
@@ -117,7 +138,7 @@ async function updateStudioInfo (req: Request, res: Response){
         } 
     }
 
-    await moveFile('.\\public\\uploads')
+    await moveFile('./public/uploads')
     // res.redirect('/owner/owner-studio.html')
     //console.log(files.photos)
     if (files.photos){

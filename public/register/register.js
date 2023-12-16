@@ -39,7 +39,7 @@ document
     const emailErrorContainer = document.querySelector(".input-control-email .error")
 
     if(res.status=== 200){
-        window.location.href = "/admin.html"
+        window.location.href = "/owner/owner-studio.html"
     }else{
         emailErrorContainer.classList.add('active')
         emailErrorContainer.innerText = `${result.message}`
