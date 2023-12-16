@@ -66,8 +66,8 @@ window.onload = async () => {
   
 
   //Description
-  studioDescriptionDiv.innerHTML = `${studioInfo.description}`
-  studioPriceDiv.innerHTML = `${studioInfo.price}`
+  studioDescriptionDiv.innerHTML = `<p style='white-space:pre'>${studioInfo.description}</p>`
+  studioPriceDiv.innerHTML = `<p style='white-space:pre'>${studioInfo.price}</p>`
 
   //Equipment
   for(let equ of studioEqu ){

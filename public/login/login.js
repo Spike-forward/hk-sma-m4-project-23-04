@@ -27,7 +27,7 @@ document
         }else{
             errorDiv.forEach((field)=>{
                 field.classList.add("active")
-                field.innerText = "Error"
+                field.innerText = "Invalid Email or Password"
             })
         }
 })
