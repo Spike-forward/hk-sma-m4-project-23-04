@@ -89,7 +89,7 @@ INSERT INTO studio_photo (filename, cover_photo, studio_id, created_at,updated_a
             ('studio3_image4.png',FALSE,3,'2023-12-07 7:00:00','2023-12-07 7:00:00')
 ;
 
-ALTER TABLE studio ALTER COLUMN icon DROP not null;
+-- ALTER TABLE studio ALTER COLUMN icon DROP not null;
 
 
 
