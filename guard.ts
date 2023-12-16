@@ -8,8 +8,8 @@ export const isLoggedIn = (
 	next: express.NextFunction
 ) => {
 	if (req.session?.owner) {
-        console.log(req.session.owner)
-		console.log(req.session.owner_id)
+        //console.log(req.session.owner)
+		//console.log(req.session.owner_id)
 		next()
 	} else {
 		res.status(404).sendFile(path.resolve('./public/404/404.html'))
