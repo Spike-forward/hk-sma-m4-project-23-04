@@ -20,11 +20,8 @@ async function getStudioInfo(req:Request, res:Response){
         FROM studio 
         left outer join studio_photo on studio.id = studio_photo.studio_id 
         WHERE studio_photo.cover_photo = true AND
-        studio.icon IS NOT NULL AND 
-        studio.name IS NOT NULL AND 
-        studio.district IS NOT NULL AND
-        studio.address IS NOT NULL
-        ORDER BY RANDOM()`)
+        studio.name NOT IN ($1)
+        ORDER BY RANDOM()`,[''])
 
     }else{
 
@@ -33,12 +30,9 @@ async function getStudioInfo(req:Request, res:Response){
         FROM studio 
         left outer join studio_photo on studio.id = studio_photo.studio_id 
         WHERE studio_photo.cover_photo = true AND
-        studio.icon IS NOT NULL AND 
-        studio.name IS NOT NULL AND 
-        studio.district IS NOT NULL AND
-        studio.address IS NOT NULL AND
-        studio.district = $1
-        ORDER BY RANDOM()`,[district.replace("-"," ")])
+        studio.name NOT IN ($1)
+        studio.district = $2
+        ORDER BY RANDOM()`,['',district.replace("-"," ")])
 
     }
 
@@ -59,9 +53,8 @@ async function getHomepageStudioInfo(req:Request, res:Response){
     FROM studio 
     left outer join studio_photo on studio.id = studio_photo.studio_id 
     WHERE studio_photo.cover_photo = true AND
-    studio.name IS NOT NULL
-    ORDER BY RANDOM() limit 3`)
-
+    studio.name NOT IN ($1)
+    ORDER BY RANDOM() limit 3`,[''])
 
     const studioInfo = result.rows
     console.log(studioInfo)

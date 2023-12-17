@@ -1,3 +1,16 @@
+# 2023-12-17 Meeting With Jason
+
+Item to fix:
+- one booking with should be combined
+
+Feedback:
+- overrun
+- PPT workflow should have more graphic, less word
+- Demo Data Preparation: 
+    - prepare 貼近真實情況嘅Data
+    - prepare 多啲studio
+
+
 # 2023-12-14 Meeting With Jason
 
 17/12 9:00 - 9:30am Presentation

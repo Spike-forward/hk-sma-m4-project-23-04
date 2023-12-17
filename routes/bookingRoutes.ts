@@ -16,7 +16,7 @@ bookingRoutes.post('/',postBooking)
 
 async function checkValidStudioID(req:Request, res:Response){
     const studioID = parseInt(req.query.studio_id as string)
-    const studioIDRes = await client.query(`SELECT id, name FROM studio WHERE district NOT IN ('Choose the district of your studio') `)
+    const studioIDRes = await client.query(`SELECT id, name FROM studio WHERE name NOT IN ($1) `,[''])
    
     if(studioIDRes.rows.some((studio)=> studio.id === studioID)){
         res.json({success:"Studio ID exists in database"})
