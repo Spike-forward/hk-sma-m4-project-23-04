@@ -9,6 +9,7 @@ import { ownerBookingRoutes } from './routes/ownerBookingRoutes';
 import { ownerStudioRoutes } from './routes/ownerStudioRoutes';
 import { loginRoutes } from './routes/loginRoutes';
 import { registerRoutes } from './routes/registerRoutes';
+import { studiosListRoutes } from './routes/studioListRoutes';
 
 const app = express()
 app.use(express.urlencoded({ extended: true })) 
@@ -49,6 +50,7 @@ app.use('/login',loginRoutes)
 app.use('/register',registerRoutes)
 app.use('/owner-booking', isLoggedIn, ownerBookingRoutes)
 app.use('/owner-studio', isLoggedIn, ownerStudioRoutes)
+app.use('/studio-list', studiosListRoutes)
 
 
 

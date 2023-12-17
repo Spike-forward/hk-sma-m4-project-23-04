@@ -1,7 +1,0 @@
-/* Three studio Card */
-
-.container-fluid{
-    display: flex;
-    justify-content: space-around;
-    padding: 5%;
-}

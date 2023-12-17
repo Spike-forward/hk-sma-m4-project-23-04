@@ -13,7 +13,8 @@ export const isLoggedIn = (
 		next()
 	} else {
 		// res.status(404).sendFile(path.resolve('./public/404/404.html'))
-		res.status(401).redirect('/404/404.html')
+		// res.status(401).redirect('/404/404.html')
+		res.status(401).redirect('/login/login.html')
 	}
 }
 
