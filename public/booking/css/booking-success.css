@@ -1,3 +1,27 @@
+/* nav bar */
+
+.navbar-brand img{
+    height:40px;
+}
+    
+#navbarSupportedContent li{
+    list-style-type:none;
+}
+    
+li.nav-item-right{
+    background-color: #6A76D8;
+    padding:10px;
+    color:white;
+    border-radius: 10px;
+    font-weight:bold;
+}
+
+li.nav-item-right:hover{
+    background-color: #2e356c;
+    cursor: pointer;
+}
+
+
 .message {
     border: 5px solid;
     position: absolute;
@@ -35,4 +59,24 @@ i{
     background-color: #2e356c;
     color:white;
     cursor: pointer;
+}
+
+
+#footer{
+    padding:50px;
+    background-color: #dde1ff;
+}
+
+#footer img{
+    height:80px;
+    transform: translateX(-30px);
+}
+
+#footer p{
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.right-reserved{
+    margin-top: 20px;
 }

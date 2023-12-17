@@ -219,6 +219,25 @@ input[type="submit"]{
 
 }
 
+#footer{
+    padding:50px;
+    background-color: #dde1ff;
+}
+
+#footer img{
+    height:80px;
+    transform: translateX(-30px);
+}
+
+#footer p{
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.right-reserved{
+    margin-top: 20px;
+}
+
 
 
 
