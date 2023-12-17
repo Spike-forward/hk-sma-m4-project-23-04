@@ -16,7 +16,7 @@ bookingRoutes.post('/',postBooking)
 
 async function checkValidStudioID(req:Request, res:Response){
     const studioID = parseInt(req.query.studio_id as string)
-    const studioIDRes = await client.query(`SELECT id FROM studio`)
+    const studioIDRes = await client.query(`SELECT id, name FROM studio WHERE district NOT IN ('Choose the district of your studio') `)
    
     if(studioIDRes.rows.some((studio)=> studio.id === studioID)){
         res.json({success:"Studio ID exists in database"})
@@ -33,6 +33,7 @@ async function getStudioInfo(req:Request, res:Response){
     if(studioIDRes.rows.some((studio)=> studio.id === studioID)){
         const result = await client.query(`SELECT icon,name,district,address,description,price,contact_no FROM studio WHERE id = $1`,[studioID])
         const studioInfo = result.rows[0]
+        console.log(studioInfo)
         res.json(studioInfo)
     }else{
         res.json({error:"Studio ID is not valid."})
