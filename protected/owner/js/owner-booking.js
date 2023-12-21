@@ -71,7 +71,7 @@ async function loadPage() {
                 </div>
             </div>`
             for (let i=0; i<request.start_time.length; i++){
-                studioPendingReq.querySelector('#pending-tab-pane .periods').innerHTML += 
+                studioPendingReq.querySelector(`.id-${request.id} .periods`).innerHTML += 
                 `${request.start_time[i]}-${request.end_time[i]} </br>`
             }
         }
@@ -96,7 +96,7 @@ async function loadPage() {
                 </div>
             </div>`
             for (let i=0; i<request.start_time.length; i++){
-                studioPaymentReq.querySelector('#payment-tab-pane .periods').innerHTML += 
+                studioPaymentReq.querySelector(`.id-${request.id} .periods`).innerHTML += 
                 `${request.start_time[i]}-${request.end_time[i]} </br>`
             }
         }
@@ -117,7 +117,7 @@ async function loadPage() {
                 </div>
             </div>`
             for (let i=0; i<request.start_time.length; i++){
-                studioApprovedReq.querySelector('#approved-tab-pane .periods').innerHTML += 
+                studioApprovedReq.querySelector(`.id-${request.id} .periods`).innerHTML += 
                 `${request.start_time[i]}-${request.end_time[i]} </br>`
             }
         }
@@ -138,7 +138,7 @@ async function loadPage() {
                 </div>
             </div>`
             for (let i=0; i<request.start_time.length; i++){
-                studioRejectedReq.querySelector('#rejected-tab-pane .periods').innerHTML += 
+                studioRejectedReq.querySelector(`.id-${request.id} .periods`).innerHTML += 
                 `${request.start_time[i]}-${request.end_time[i]} </br>`
             }
         }
