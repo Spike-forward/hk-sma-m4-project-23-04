@@ -1,4 +1,5 @@
 window.onload = loadPage()
+
 async function loadPage () {
     const ownerNameRes = await fetch('/owner-studio/owner-name')
     const ownerName = await ownerNameRes.json()
@@ -43,15 +44,13 @@ async function loadPage () {
         studioContactDiv.innerHTML = `
             <input required type="tel" class="form-control" id="contactNo" value="${studioInfo.contact_no}" name="contact_no">
             <label for="contactNo">Contact Number</label>`
+
+        // Caution: If textarea is added by editing innerHTML, whitespace may be added if there is a line spacing
         studioPriceDiv.innerHTML = `
-            <textarea required class="form-control" name="price" id="price" style="height: 150px; width: 40%">
-            ${studioInfo.price}
-            </textarea>
+            <textarea required class="form-control" name="price" id="price" style="height: 150px; width: 40%">${studioInfo.price}</textarea>
             <label for="price">Price</label>`
         studioDescriptionDiv.innerHTML = `
-            <textarea class="form-control" name="description" id="description" style="height: 150px; width: 40%">
-            ${studioInfo.description}
-            </textarea>
+            <textarea class="form-control" name="description" id="description" style="height: 150px; width: 40%">${studioInfo.description}</textarea>
             <label for="description">Description</label>`
     
         document.querySelector('#district option[selected]').setAttribute('selected', false);
@@ -59,11 +58,11 @@ async function loadPage () {
             document.querySelector(`#district option[value='${studioInfo.district}']`).setAttribute('selected', true);
         }
         document.querySelector('#openTime option[selected]').setAttribute('selected', false);
-        if (document.querySelector(`#district option[value='${studioInfo.open_time}']`)){
+        if (document.querySelector(`#openTime option[value='${studioInfo.open_time}']`)){
             document.querySelector(`#openTime option[value='${studioInfo.open_time}']`).setAttribute('selected', true)
         }
         document.querySelector('#closeTime option[selected]').setAttribute('selected', false);
-        if (document.querySelector(`#district option[value='${studioInfo.close_time}']`)){
+        if (document.querySelector(`#closeTime option[value='${studioInfo.close_time}']`)){
             document.querySelector(`#closeTime option[value='${studioInfo.close_time}']`).setAttribute('selected', true);
         }
     
@@ -104,7 +103,6 @@ async function loadPage () {
                 await loadPage();
             })
         })
-    
         studioEquipDiv.innerHTML = ``
         for (let item of studioEquip){
             console.log(item)
@@ -112,13 +110,11 @@ async function loadPage () {
             <label for="${camelCasing(item.items)}"><input type="checkbox" name="item${studioEquip.indexOf(item)+1}" value="${item.items}" id="${camelCasing(item.items)}">${item.items}</label>
             `
         }
-    
         for (let item of studioInfo.equipment){
             document.querySelector(`input[value="${item}"]`).checked = true
         }
     }
 }
-
 
 document
 	.querySelector('.studio-form')
@@ -129,32 +125,6 @@ document
         console.log(form)
 		//... create your form object with the form inputs
 		const formData = new FormData(form)
-
-		// formData.append('name', form.name.value)
-        // formData.append('district', form.district.value)
-        // formData.append('address', form.address.value)
-        // formData.append('contact_no', form.contact_no.value)
-        // formData.append('openTime', form.openTime.value)
-        // formData.append('closeTime', form.closeTime.value)
-        // formData.append('price', form.price.value)
-        // formData.append('description', form.description.value)
-        // if (form.item1.checked){
-        //     formData.append('item1', form.item1.value)
-        // }
-        // if (form.item1.checked){
-        //     formData.append('item2', form.item2.value)
-        // }
-        // if (form.item1.checked){
-        //     formData.append('item3', form.item3.value)
-        // }
-        // if (form.item1.checked){
-        //     formData.append('item4', form.item4.value)
-        // }
-
-		// formData.append('icon', form.icon.files[0])
-        // //for (let photo of form.photos){
-        //     formData.append('photos', form.photos.files[0])
-        // //}
         
         const res = await fetch('/owner-studio/studio-info', {
             method: 'PUT',

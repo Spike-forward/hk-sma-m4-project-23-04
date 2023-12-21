@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express'
 import {client} from '../main';
 import formidable, { Fields, Files } from 'formidable'
 import fs from 'fs'
+import path from 'path'
 import Swal from 'sweetalert2'
 import { parseForm } from '../form';
 
@@ -146,7 +147,8 @@ async function updateStudioInfo (req: Request, res: Response){
             await client.query('INSERT INTO studio_photo (filename, cover_photo, studio_id, created_at, updated_at) VALUES ($1, False, $2, NOW(), NOW())', [(files.photos as formidable.File).newFilename, studioID])
         //}
     }
-    res.redirect('/owner/owner-studio.html')
+    res.json({msg: "update completed"})
+    //res.redirect('/owner/owner-studio.html')
 }
 
 async function updateCoverPhoto (req: Request, res: Response){
@@ -172,7 +174,7 @@ async function moveFile(folderPath: string){
         const files = await fs.promises.readdir(folderPath)
         const uploadedPhotos = []
         for (let file of files){
-            let fullPath = `${folderPath}\\${file}`
+            let fullPath = path.resolve(`${folderPath}`, `${file}`)
             const Stat = await fs.promises.stat(fullPath)
             if (Stat.isFile()){
                 uploadedPhotos.push(file)

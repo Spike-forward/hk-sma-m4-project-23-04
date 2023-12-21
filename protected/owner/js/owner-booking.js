@@ -58,7 +58,7 @@ async function loadPage() {
                     <div class="brief row">
                         <h6 class="col-md-3">Name: ${request.name}</h6>
                         <h6 class="col-md-3">Date: ${request.date}</h6>
-                        <h6 class="col-md-3">Periods: ${request.start_time}-${request.end_time}</h6>
+                        <h6 class="periods col-md-3">Periods: </br></h6>
                         <h6 class="col-md-3">Contact No.: ${request.contact_no}</h6>
                     </div>
                     <div class="detail">
@@ -70,6 +70,10 @@ async function loadPage() {
                     <button type="button" class="btn btn-danger pendingReject">Reject</button>
                 </div>
             </div>`
+            for (let i=0; i<request.start_time.length; i++){
+                studioPendingReq.querySelector('#pending-tab-pane .periods').innerHTML += 
+                `${request.start_time[i]}-${request.end_time[i]} </br>`
+            }
         }
         else if (request.status === 'waiting for payment'){
             studioPaymentReq.innerHTML += 
@@ -78,7 +82,7 @@ async function loadPage() {
                     <div class="brief row">
                         <h6 class="col-md-2">Name: ${request.name}</h6>
                         <h6 class="col-md-2">Date: ${request.date}</h6>
-                        <h6 class="col-md-2">Periods: ${request.start_time}-${request.end_time}</h6>
+                        <h6 class="periods col-md-2">Periods: </br></h6>
                         <h6 class="col-md-2">Contact No.: ${request.contact_no}</h6>
                         <h6 class="col-md-3">Accepted at: 06-12-2023</h6>
                     </div>
@@ -91,6 +95,10 @@ async function loadPage() {
                     <button type="button" class="btn btn-danger paymentReject">Rejected</button>
                 </div>
             </div>`
+            for (let i=0; i<request.start_time.length; i++){
+                studioPaymentReq.querySelector('#payment-tab-pane .periods').innerHTML += 
+                `${request.start_time[i]}-${request.end_time[i]} </br>`
+            }
         }
         else if (request.status === 'approved'){
             studioApprovedReq.innerHTML += 
@@ -99,7 +107,7 @@ async function loadPage() {
                     <div class="brief row">
                         <h6 class="col-md-2">Name: ${request.name}</h6>
                         <h6 class="col-md-2">Date: ${request.date}</h6>
-                        <h6 class="col-md-2">Periods: ${request.start_time}-${request.end_time}</h6>
+                        <h6 class="periods col-md-2">Periods: </br></h6>
                         <h6 class="col-md-2">Contact No.: ${request.contact_no}</h6>
                         <h6 class="col-md-3">Approved at: 06-12-2023</h6>
                     </div>
@@ -108,6 +116,10 @@ async function loadPage() {
                     </div>
                 </div>
             </div>`
+            for (let i=0; i<request.start_time.length; i++){
+                studioApprovedReq.querySelector('#approved-tab-pane .periods').innerHTML += 
+                `${request.start_time[i]}-${request.end_time[i]} </br>`
+            }
         }
         else if (request.status === 'rejected'){
             studioRejectedReq.innerHTML += 
@@ -116,7 +128,7 @@ async function loadPage() {
                     <div class="brief row">
                         <h6 class="col-md-2">Name: ${request.name}</h6>
                         <h6 class="col-md-2">Date: ${request.date}</h6>
-                        <h6 class="col-md-2">Periods: ${request.start_time}-${request.end_time}</h6>
+                        <h6 class="periods col-md-2">Periods: </br></h6>
                         <h6 class="col-md-2">Contact No.: ${request.contact_no}</h6>
                         <h6 class="col-md-3">Rejected at: 06-12-2023</h6>
                     </div>
@@ -125,6 +137,10 @@ async function loadPage() {
                     </div>
                 </div>
             </div>`
+            for (let i=0; i<request.start_time.length; i++){
+                studioRejectedReq.querySelector('#rejected-tab-pane .periods').innerHTML += 
+                `${request.start_time[i]}-${request.end_time[i]} </br>`
+            }
         }
     }
 
