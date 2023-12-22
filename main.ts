@@ -2,7 +2,7 @@ import express from 'express'
 import expressSession from 'express-session'
 import {Client} from 'pg';
 import dotenv from 'dotenv';
-import path from 'path';
+// import path from 'path';
 import { isLoggedIn } from './guard';
 import { bookingRoutes } from './routes/bookingRoutes';
 import { ownerBookingRoutes } from './routes/ownerBookingRoutes';

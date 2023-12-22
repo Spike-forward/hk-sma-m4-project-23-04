@@ -67,6 +67,8 @@ async function getStudioOpenDuration(req:Request, res:Response){
 }
 
 async function getBookedDateTime(req:Request, res:Response){
+
+    
     const studioID = parseInt(req.query.studio_id as string)
     const result = await client.query(`SELECT booking_timeslot.start_time, booking_timeslot.end_time, booking_status.status, booking.date 
                                        FROM booking_timeslot

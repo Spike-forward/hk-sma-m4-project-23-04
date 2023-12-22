@@ -1,5 +1,7 @@
 window.onload = async () => {
 
+  loadDateTimeFilter();
+
 
   //Fetch From API
 
@@ -12,8 +14,6 @@ window.onload = async () => {
 
   const studioRowDiv = document.querySelector('.studio-row')
 
-
- 
     for(let studio of studioInfo){
         studioRowDiv.innerHTML += ` <div class="col-lg-4 col-md-12">
         <a href="/booking/booking.html?studio_id=${studio.id}">
@@ -37,9 +37,36 @@ window.onload = async () => {
       </div>`
     }
 
-
 }
 
+
+function addDays(date, days) {
+  date.setDate(date.getDate() + days);
+    return date;
+}
+
+function loadDateTimeFilter(){
+      flatpickr("#date", { 
+        minDate: addDays(new Date(), 2),
+        maxDate: addDays(new Date(), 32)}
+    );
+
+    flatpickr("#startTime", { 
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true,
+    minuteIncrement:60}
+    );
+
+    flatpickr("#endTime", { 
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true,
+    minuteIncrement:60}
+    );
+}
 
  
   
