@@ -3,6 +3,13 @@ window.onload = async () => {
   loadDateTimeFilter();
    
    const searchParams = new URLSearchParams(location.search);
+   let district = searchParams.get('district');
+   let filterDate = searchParams.get('date');
+   let filterStartTime= searchParams.get('startTime');
+   let filterEndTime= searchParams.get('endTime');
+
+   console.log(filterDate)
+
    let studioInfoRes;
    let districtFilter = document.querySelectorAll(".dropdown-content a")
    let dateTimeFilter = document.querySelector("#date-time-filter")
@@ -11,8 +18,11 @@ window.onload = async () => {
       button.addEventListener('click', async function(){
         const district = this.getAttribute("district");
         searchParams.set('district', district);
+        filterDate = searchParams.get('date');
+        filterStartTime= searchParams.get('startTime');
+        filterEndTime= searchParams.get('endTime');
         window.history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
-        studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}`)
+        studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}&date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
         loadStudio(studioInfoRes);
       })
    })
@@ -23,27 +33,18 @@ window.onload = async () => {
         searchParams.set('date',form.date.value);
         searchParams.set('startTime', form.startTime.value);
         searchParams.set('endTime',form.endTime.value);
+        district = searchParams.get('district');
         window.history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
-        studioInfoRes = await fetch(`/studio-list/date-time-filter?date=${form.date.value}&startTime=${form.startTime.value}&endTime=${form.endTime.value}`)
+        studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}&date=${form.date.value}&startTime=${form.startTime.value}&endTime=${form.endTime.value}`)
         loadStudio(studioInfoRes);
    })
 
-    const district = searchParams.get('district');
-    const filterDate = searchParams.get('date');
-    const filterStartTime= searchParams.get('startTime');
-    const filterEndTime= searchParams.get('endTime');
-    
-  
     //Fetch From API
-    if(!district && !filterDate){
-      studioInfoRes = await fetch("/studio-list/studio-info")
-    }else if(district && !filterDate){
-      studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}`)
-    }else if(filterDate){
-      studioInfoRes = await fetch(`/studio-list/date-time-filter?date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
-    }
+  
+      studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}&date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
 
-    loadStudio(studioInfoRes);
+
+     loadStudio(studioInfoRes);
 
 }
 
