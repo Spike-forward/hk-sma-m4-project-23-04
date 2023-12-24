@@ -1,7 +1,9 @@
+import {loadDateTimeFilter, filterMobileListener} from './all-studios/all-studios.js'
+
 window.onload = async () => {
 
   loadDateTimeFilter();
-
+  filterMobileListener();
 
   //Fetch From API
 
@@ -37,37 +39,44 @@ window.onload = async () => {
       </div>`
     }
 
-}
 
+    let districtFilter = document.querySelector("#district-filter")
+    let dateTimeFilter = document.querySelector("#date-time-filter")
+    
+   
+    districtFilter.addEventListener("submit", async function(event){
+        
+         const form = event.target
 
-function addDays(date, days) {
-  date.setDate(date.getDate() + days);
-    return date;
-}
-
-function loadDateTimeFilter(){
-      flatpickr("#date", { 
-        minDate: addDays(new Date(), 2),
-        maxDate: addDays(new Date(), 32)}
-    );
-
-    flatpickr("#startTime", { 
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true,
-    minuteIncrement:60}
-    );
-
-    flatpickr("#endTime", { 
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true,
-    minuteIncrement:60}
-    );
-}
-
+         window.history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
+         studioInfoRes = await fetch(`/studio-list/studio-info?district=${form.district.value}`)
+         
+     })
  
-  
+    dateTimeFilter.addEventListener("submit", async function(event){
+         const form = event.target
+         const errorDiv = document.querySelector(".error")
+ 
+         //Return error when user selects an endTime that is earlier than the startTime
+         if(form.endTime.value <= form.startTime.value){
+           event.preventDefault();
+           errorDiv.classList.add('active')
+           return errorDiv.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select an end time that is later than the start time`;
+         }else{
+           errorDiv.classList.remove('active')
+           errorDiv.innerHTML = ""
+         }
+
+         searchParams.set('date',form.date.value);
+         searchParams.set('startTime', form.startTime.value);
+         searchParams.set('endTime',form.endTime.value);
+         window.history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
+         studioInfoRes = await fetch(`/studio-list/studio-info?date=${form.date.value}&startTime=${form.startTime.value}&endTime=${form.endTime.value}`)
+    })
+ 
+
+}
+
+
+
     

@@ -1,6 +1,7 @@
 window.onload = async () => {
   
   loadDateTimeFilter();
+  filterMobileListener();
    
    const searchParams = new URLSearchParams(location.search);
    let district = searchParams.get('district');
@@ -11,25 +12,38 @@ window.onload = async () => {
    console.log(filterDate)
 
    let studioInfoRes;
-   let districtFilter = document.querySelectorAll(".dropdown-content a")
+   let districtFilter = document.querySelector("#district-filter")
    let dateTimeFilter = document.querySelector("#date-time-filter")
-   
-   districtFilter.forEach((button)=>{
-      button.addEventListener('click', async function(){
-        const district = this.getAttribute("district");
-        searchParams.set('district', district);
+   const filterContainer = document.querySelector(".filter-container")
+  
+   districtFilter.addEventListener("submit", async function(event){
+        event.preventDefault();
+        filterContainer.classList.remove("mobile")
+        const form = event.target
+        searchParams.set('district', form.district.value);
         filterDate = searchParams.get('date');
         filterStartTime= searchParams.get('startTime');
         filterEndTime= searchParams.get('endTime');
         window.history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
-        studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}&date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
+        studioInfoRes = await fetch(`/studio-list/studio-info?district=${form.district.value}&date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
         loadStudio(studioInfoRes);
-      })
-   })
+    })
 
    dateTimeFilter.addEventListener("submit", async function(event){
         event.preventDefault();
         const form = event.target
+        const errorDiv = document.querySelector(".error")
+
+        //Return error when user selects an endTime that is earlier than the startTime
+        if(form.endTime.value <= form.startTime.value){
+          errorDiv.classList.add('active')
+          return errorDiv.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select an end time that is later than the start time`;
+        }else{
+          errorDiv.classList.remove('active')
+          errorDiv.innerHTML = ""
+          filterContainer.classList.remove("mobile")
+        }
+
         searchParams.set('date',form.date.value);
         searchParams.set('startTime', form.startTime.value);
         searchParams.set('endTime',form.endTime.value);
@@ -41,10 +55,10 @@ window.onload = async () => {
 
     //Fetch From API
   
-      studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}&date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
+    studioInfoRes = await fetch(`/studio-list/studio-info?district=${district}&date=${filterDate}&startTime=${filterStartTime}&endTime=${filterEndTime}`)
 
 
-     loadStudio(studioInfoRes);
+    loadStudio(studioInfoRes);
 
 }
 
@@ -54,10 +68,12 @@ function addDays(date, days) {
 }
 
 
-function loadDateTimeFilter(){
+export function loadDateTimeFilter(){
     flatpickr("#date", { 
       minDate: addDays(new Date(), 2),
-      maxDate: addDays(new Date(), 32)}
+      maxDate: addDays(new Date(), 32),
+      defaultDate: addDays(new Date(), 2)
+    }
     );
   
     flatpickr("#startTime", { 
@@ -65,7 +81,8 @@ function loadDateTimeFilter(){
     noCalendar: true,
     dateFormat: "H:i",
     time_24hr: true,
-    minuteIncrement:60}
+    minuteIncrement:60,
+    defaultDate: "10:00"}
     );
     
     flatpickr("#endTime", { 
@@ -73,7 +90,8 @@ function loadDateTimeFilter(){
     noCalendar: true,
     dateFormat: "H:i",
     time_24hr: true,
-    minuteIncrement:60}
+    minuteIncrement:60,
+    defaultDate: "11:00"}
     );
 }
 
@@ -117,5 +135,21 @@ async function loadStudio(studioInfoRes){
   
   
   }
+
+}
+
+export function filterMobileListener(){
+   const mobileFilterButton = document.querySelector(".filter-button>button")
+   const filterContainer = document.querySelector(".filter-container")
+   const filterClose = document.querySelector(".close")
+
+   mobileFilterButton.addEventListener("click", function(event){
+      filterContainer.classList.add("mobile")
+   })
+
+   filterClose.addEventListener("click", function(event){
+    filterContainer.classList.remove("mobile")
+  })
+
 
 }

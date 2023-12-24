@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>See All Studios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="all-studios.css">
 </head>
@@ -47,76 +48,96 @@
     </div>
   </nav>
 
-    <!-- Banner -->
 
-    <div class="banner">
-        <img src="../images/platform_banner.jpeg" class="d-block w-100" alt="...">
-        <div class="filter-2">
-          <form id="date-time-filter" method="get" action="/all-studios/all-studios.html">
-            <label for="date">Select a date:</label>
-            <input id="date" name="date" type="date">
-  
-            <label for="startTime">Select a start time:</label>
-            <input id="startTime" name="startTime" type="time">
-  
-            <label for="endTime">Select a end time:</label>
-            <input id="endTime" name="endTime" type="time">
-  
-            <input type="submit" value="Submit">
-          </form>
-  
-        </div>
-    </div>
-
-    <!-- dropdown -->
-    
-      <!-- <div class="dropdown">
-        <button class="dropbtn">District Search</button>
-          <div class="dropdown-content">
-              <a href="/all-studios/all-studios.html?district=Central-and-Western">Central and Western</a>
-              <a href="/all-studios/all-studios.html?district=Eastern">Eastern</a>
-              <a href="/all-studios/all-studios.html?district=Southern">Southern</a>
-              <a href="/all-studios/all-studios.html?district=Wan-Chai">Wan Chai</a>
-              <a href="/all-studios/all-studios.html?district=Kowloon-City">Kowloon City</a>
-              <a href="/all-studios/all-studios.html?district=Kwun-Tong">Kwun Tong</a>
-              <a href="/all-studios/all-studios.html?district=Sham-Shiu-Po">Sham Shiu Po</a>
-              <a href="/all-studios/all-studios.html?district=Wong-Tai-Sin">Wong Tai Sin</a>
-              <a href="/all-studios/all-studios.html?district=Yau-Tsim-Mong">Yau Tsim Mong</a>
-              <a href="/all-studios/all-studios.html?district=Islands">Islands</a>
-              <a href="/all-studios/all-studios.html?district=Kwai-Tsing">Kwai Tsing</a>
-              <a href="/all-studios/all-studios.html?district=North">North</a>
-              <a href="/all-studios/all-studios.html?district=Sai-Kung">Sai Kung</a>
-              <a href="/all-studios/all-studios.html?district=Sha-Tin">Sha Tin</a>
-              <a href="/all-studios/all-studios.html?district=Tai-Po">Tai Po</a>
-              <a href="/all-studios/all-studios.html?district=Tsuen-Wan">Tsuen Wan</a>
-              <a href="/all-studios/all-studios.html?district=Tuen-Mun">Tuen Mun</a>
-              <a href="/all-studios/all-studios.html?district=Yuen-Long">Yuen Long</a>
-          </div>
-      </div> -->
-
-      <div class="dropdown">
-        <button class="dropbtn">District Search</button>
-          <div class="dropdown-content">
-              <a district="Central-and-Western" >Central and Western</a>
-              <a district="Eastern">Eastern</a>
-              <a district="Southern">Southern</a>
-              <a district="Wan-Chai">Wan Chai</a>
-              <a district="Kowloon-City">Kowloon City</a>
-              <a district="Kwun-Tong">Kwun Tong</a>
-              <a district="Sham-Shiu-Po">Sham Shiu Po</a>
-              <a district="Wong-Tai-Sin">Wong Tai Sin</a>
-              <a district="Yau-Tsim-Mong">Yau Tsim Mong</a>
-              <a district="Islands">Islands</a>
-              <a district="Kwai-Tsing">Kwai Tsing</a>
-              <a district="North">North</a>
-              <a district="Sai-Kung">Sai Kung</a>
-              <a district="Sha-Tin">Sha Tin</a>
-              <a district="Tai-Po">Tai Po</a>
-              <a district="Tsuen-Wan">Tsuen Wan</a>
-              <a district="Tuen-Mun">Tuen Mun</a>
-              <a district="Yuen-Long">Yuen Long</a>
-          </div>
+    <div class="top-container">
+      <!-- Banner -->
+      <div class="banner">
+          <img src="../images/platform_banner.jpeg" class="d-block w-100" alt="...">
       </div>
+
+      <!-- All Filters -->
+
+      <div class="filter-button">
+        <button><i class="bi bi-funnel"></i>Filter</button>
+      </div>
+
+      <div class="filter-container">
+
+        <div class="close"><i class="bi bi-x"></i></div>
+
+        <!-- Date & Time Filter -->
+        <div class="filter filter1">
+          <form id="date-time-filter" method="get" action="/all-studios/all-studios.html">
+           
+            <p><i class="bi bi-funnel"></i> Find studio by date & time</p>
+            <div class="container-fluid">
+              <div class="row">
+                
+                  <div class="form-floating col-lg-4">
+                    <input class="form-control" id="date" name="date" type="date">
+                    <label for="date"> <i class="bi bi-calendar-event"></i> Date</label>
+                  </div>
+
+                  <div class="form-floating col-lg-4">
+                    <input class="form-control" id="startTime" name="startTime" type="time">
+                    <label for="startTime"><i class="bi bi-clock"></i> Start Time (Per Hour)(24hrs)</label>
+                    
+                  </div>
+
+                  <div class="form-floating col-lg-4">
+                    <input class="form-control" id="endTime" name="endTime" type="time">
+                    <label for="endTime"><i class="bi bi-clock"></i> End Time (Per Hour)(24hrs)</label>
+                    <div class="error"></div>
+                  </div>
+                          
+                </div>
+              </div>
+              <input type="submit" value="Search">     
+
+          </form>
+        </div>
+
+        <!-- District Filter -->
+        <div class="filter filter2">
+            <form id="district-filter" method="get" action="/all-studios/all-studios.html">
+              <p><i class="bi bi-funnel"></i> Find studio by district</p>
+              <div class="form-floating studio-district">
+               
+                <select required class="form-select" name="district" id="district" aria-label="District label select">
+                    <option selected>All Districts</option>
+                    <option value="Central and Western">Central and Western</option>
+                    <option value="Eastern">Eastern</option>
+                    <option value="Southern">Southern</option>
+                    <option value="Wan Chai">Wan Chai</option>
+                    <option value="Kowloon City">Kowloon City</option>
+                    <option value="Kwun Tong">Kwun Tong</option>
+                    <option value="Sham Shiu Po">Sham Shiu Po</option>
+                    <option value="Wong Tai Sin">Wong Tai Sin</option>
+                    <option value="Yau Tsim Mong">Yau Tsim Mong</option>
+                    <option value="Islands">Islands</option>
+                    <option value="Kwai Tsing">Kwai Tsing</option>
+                    <option value="North">North</option>
+                    <option value="Sai Kung">Sai Kung</option>
+                    <option value="Sha Tin">Sha Tin</option>
+                    <option value="Tai Po">Tai Po</option>
+                    <option value="Tsuen Wan">Tsuen Wan</option>
+                    <option value="Tuen Mun">Tuen Mun</option>
+                    <option value="Yuen Long">Yuen Long</option>
+                </select>
+                <label for="floatingSelect"> <i class="bi bi-geo"></i> District</label>
+              </div>
+
+            <input type="submit" value="Search">
+          </form>
+        </div>
+
+
+
+      </div>
+  </div>
+
+
+
 
       <div class="message"></div>
     
@@ -141,6 +162,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="all-studios.js"></script>    
+    <script type="module" src="all-studios.js"></script>    
 </body>
 </html>

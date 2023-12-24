@@ -8,7 +8,6 @@ export const studiosListRoutes  = express.Router();
 //Routes: /studio-list/studio-info
 studiosListRoutes.get('/studio-info',getStudioInfo)
 studiosListRoutes.get('/studio-homepage-info',getHomepageStudioInfo)
-studiosListRoutes.get('/date-time-filter',getDateTimeFiltered)
 
 
 async function getStudioInfo(req:Request, res:Response){
@@ -17,12 +16,14 @@ async function getStudioInfo(req:Request, res:Response){
         const filterDate = req.query.date as string
         const filterStartTimeQuery = req.query.startTime as string
         const filterEndTimeQuery = req.query.endTime as string
-
-        console.log(filterDate,filterStartTimeQuery)
-
-        //Ready to use query string parameter
         let district = req.query.district as string;
-       console.log(district)
+
+        if(district === "All Districts"){
+            district = "null"
+        }
+
+        console.log(typeof district, district)
+   
         let sql= `
         SELECT studio.icon,studio.name,studio.district,studio.address,studio.id,studio_photo.filename 
         FROM studio 
@@ -33,12 +34,13 @@ async function getStudioInfo(req:Request, res:Response){
 
         let params:any[] = ['']
 
-        if (district !== "null") {
-            const pattern = /-/g
-            district = district.replace(pattern," ")
+        if (district != "null") {
             params.push(district)
             sql += ` AND studio.district = $${params.length}`;
         }
+
+       
+
 
         //studio.id = ANY($1)
         if(filterDate !=="null" && filterStartTimeQuery !=="null" && filterEndTimeQuery !=="null"){
@@ -69,40 +71,7 @@ async function getStudioInfo(req:Request, res:Response){
 
 
 
-// async function getStudioInfo(req:Request, res:Response){
-    
-//     const district = req.query.district as string;
 
-//     let result;
-    
-//     if(!district){
-//         result = await client.query(`
-//         SELECT studio.icon,studio.name,studio.district,studio.address,studio.id,studio_photo.filename 
-//         FROM studio 
-//         left outer join studio_photo on studio.id = studio_photo.studio_id 
-//         WHERE studio_photo.cover_photo = true AND
-//         studio.name NOT IN ($1)
-//         ORDER BY RANDOM()`,[''])
-
-//     }else{
-
-//         result = await client.query(`
-//         SELECT studio.icon,studio.name,studio.district,studio.address,studio.id,studio_photo.filename 
-//         FROM studio 
-//         left outer join studio_photo on studio.id = studio_photo.studio_id 
-//         WHERE studio_photo.cover_photo = true AND
-//         studio.name NOT IN ($1) AND
-//         studio.district = $2
-//         ORDER BY RANDOM()`,['',district.replace("-"," ")])
-
-//     }
-
-
-//     const studioInfo = result.rows
-    
-  
-//     res.json(studioInfo)
-// }
 
 
 async function getHomepageStudioInfo(req:Request, res:Response){
@@ -121,34 +90,7 @@ async function getHomepageStudioInfo(req:Request, res:Response){
     res.json(studioInfo)
 }
 
-async function getDateTimeFiltered(req:Request, res:Response){
 
-    const filterStartTimeQuery = req.query.startTime as string
-    const filterEndTimeQuery = req.query.endTime as string
-
-    const filterDate = req.query.date as string
-    const filterStartTime = parseInt(filterStartTimeQuery.split(':')[0])
-    const filterEndTime = parseInt(filterEndTimeQuery.split(':')[0])
-
-    console.log(filterDate,filterStartTime,filterEndTime)
-
-    const availableStudioID = await findStudioBasedOnDateTime(filterDate,filterStartTime,filterEndTime)
-    
-
-    // Return the available studio information based on availableStudioID array
-    const availableStudioListResult = await client.query(`
-        SELECT studio.icon,studio.name,studio.district,studio.address,studio.id,studio_photo.filename 
-        FROM studio 
-        left outer join studio_photo on studio.id = studio_photo.studio_id 
-        WHERE studio_photo.cover_photo = true AND
-        studio.id = ANY($1)
-        ORDER BY RANDOM()`,[availableStudioID])
-
-    const availableStudioList = availableStudioListResult.rows
-    res.json(availableStudioList)
-
-    
-}
 
 async function findStudioBasedOnDateTime(filterDate: any,filterStartTime: number,filterEndTime: number){
         //Return all studio info with its booked timeslot and date
