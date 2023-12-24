@@ -1,21 +1,32 @@
 window.onload = async () => {
+
+  const searchParams = new URLSearchParams(location.search);
+  let district = searchParams.get('district');
+  let filterDate = searchParams.get('date');
+  let filterStartTime = searchParams.get('startTime');
+  let filterEndTime = searchParams.get('endTime');
   
   loadDateTimeFilter();
   filterMobileListener();
-   
-   const searchParams = new URLSearchParams(location.search);
-   let district = searchParams.get('district');
-   let filterDate = searchParams.get('date');
-   let filterStartTime= searchParams.get('startTime');
-   let filterEndTime= searchParams.get('endTime');
 
-   console.log(filterDate)
+  
 
    let studioInfoRes;
    let districtFilter = document.querySelector("#district-filter")
    let dateTimeFilter = document.querySelector("#date-time-filter")
    const filterContainer = document.querySelector(".filter-container")
-  
+
+   if(filterDate && filterStartTime && filterEndTime){
+    document.getElementById("date").value = filterDate
+    document.getElementById("startTime").value = filterStartTime
+    document.getElementById("endTime").value =filterEndTime
+    
+   }
+
+   if(district){
+    document.getElementById("district").value = district
+   }
+
    districtFilter.addEventListener("submit", async function(event){
         event.preventDefault();
         filterContainer.classList.remove("mobile")
