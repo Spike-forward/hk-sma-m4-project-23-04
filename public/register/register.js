@@ -57,6 +57,7 @@ document
     const result = await res.json()
 
     if(res.status === 200){
+        form.reset();
         swalWithBootstrapButtons.fire({
             title: "Registration succeed!",
             text: "You can choose to login or go back to main page.",
