@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e" pages="7">
     <diagram name="Business Flow Chart" id="CO8c-XYk3vwqfi9IgGvG">
-        <mxGraphModel dx="2522" dy="1473" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1119" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -602,7 +602,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="98K31oUmz1QbkBrKbpwi" name="HomePage &amp; All Studio Page">
-        <mxGraphModel dx="1934" dy="1859" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1386" dy="1556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -917,41 +917,41 @@
                 <mxCell id="Xg6shlltF-SSb4jLsZKy-24" value="How could we generate the booking reference?&lt;br&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Method 1: Use Postgres SQL Sequence&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Method 2: JS random()&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Method 3: NPM library&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;size=16;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
                     <mxGeometry x="-370" y="1320" width="360" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1890" y="920" width="850" height="260" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-2" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-2" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="2060" y="1100" width="542" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-3" value="Find by available date &amp;amp; time" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-3" value="Find by available date &amp;amp; time" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2080" y="1115" width="170" height="15" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-4" value="Find by district" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-4" value="Find by district" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2080" y="1170" width="70" height="11" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2080" y="1135" width="120" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-6" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-6" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2220" y="1135" width="120" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2361" y="1135" width="120" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-8" value="Search" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-8" value="Search" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2500" y="1135" width="50" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-9" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-9" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2080" y="1192.5" width="120" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-26" value="Search" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+                <mxCell id="Uu03EEy6-rLCO1OiT4IZ-26" value="Search" style="rounded=1;whiteSpace=wrap;html=1;fontSize=8;" parent="1" vertex="1">
                     <mxGeometry x="2210" y="1192.5" width="50" height="25" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
     </diagram>
     <diagram id="8OXty5Gxbtx6MMyfNj04" name="Booking">
-        <mxGraphModel dx="703" dy="1588" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2236" dy="2717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -1188,20 +1188,47 @@
                 <mxCell id="_VZtuzX2ugD6WYGwY0Ov-19" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="550" y="890" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="QXZGMtVZFrHZfIXMCrvq-16" value="After submit the request, this booking request form will change to a thank you page. AJAX" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;size=16;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
-                    <mxGeometry x="1740" y="970" width="216" height="105" as="geometry"/>
-                </mxCell>
-                <mxCell id="Dqy6vUOpYm2c9LvL6oSq-39" value="" style="group" parent="1" vertex="1" connectable="0">
+                <mxCell id="Dqy6vUOpYm2c9LvL6oSq-39" value="" style="group;fontSize=8;" parent="1" vertex="1" connectable="0">
                     <mxGeometry x="1250" y="327.5" width="460" height="795" as="geometry"/>
                 </mxCell>
                 <mxCell id="Dqy6vUOpYm2c9LvL6oSq-41" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
-                    <mxGeometry y="-30" width="460" height="795" as="geometry"/>
+                    <mxGeometry y="-30" width="460" height="630" as="geometry"/>
                 </mxCell>
-                <mxCell id="Dqy6vUOpYm2c9LvL6oSq-3" value="We have recieved your booking request. The studio owner will cotact you shortly." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
-                    <mxGeometry x="70" y="209.5" width="320" height="30" as="geometry"/>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-1" value="Nav Bar" style="rounded=0;whiteSpace=wrap;html=1;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry y="-27.5" width="460" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="Dqy6vUOpYm2c9LvL6oSq-29" value="Your Booking: 23/12/2023 16:30 - 17:00&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 23/12/2023 17:00 - 17:30" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
-                    <mxGeometry x="110" y="274.5" width="220" height="30" as="geometry"/>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-2" value="Footer" style="rounded=0;whiteSpace=wrap;html=1;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry y="540" width="460" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-3" value="Image" style="rounded=0;whiteSpace=wrap;html=1;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="60" y="132.5" width="350" height="77.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="60" y="210" width="350" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-7" value="&lt;b style=&quot;font-size: 30px;&quot;&gt;Thank you!&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="127.5" y="227.5" width="215" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-18" value="* Please mark down the booking number for checking your booking in the future" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="118.75" y="337.5" width="230" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-20" value="&lt;p style=&quot;line-height: 60%;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Your booking request is sent. The studio owner will contact you soon!&lt;/font&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontSize=15;fontColor=#ebebeb;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="110" y="262.5" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-21" value="Back to homepage" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontSize=10;fontColor=#ebebeb;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="118.75" y="370" width="110" height="27.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-22" value="Book another studio" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontSize=10;fontColor=#ebebeb;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="250" y="370" width="110" height="27.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-8" value="Booking Number *:&lt;b&gt;&amp;nbsp;2023122600009&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="111.25" y="312.5" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ew7-cWnTcKeb92GkX8ca-25" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,iVBORw0KGgoAAAANSUhEUgAAAGoAAABeCAYAAADLyoEsAAAACXBIWXMAABYlAAAWJQFJUiTwAAADn0lEQVR4nO3dy05TURiG4Y8iQkigJOpcwkHLwXIYG/BwA0IhJI60lIIYnZjoPRgEVCynmBAVQZHoDYgQxy0FHViovQK1QIIDEuqAhLgasdBV9tpf9v/MVmkWK3mzW8IPu3mpVCoFYXsu0wcQhyOhSEgoEhKKhIQiIaFISCgSEoqEhCIhoUhIKBISioSEIiGhSJwwfQAdkcgy5ubfIx6PI7Yex0Zyw+h53GVuVFdWoLKyAr72NjR4L+Rs7zzGedTOzg4GBocx+XwKqd1d08f5J1e+C8FuP+7e6UdBQYH2fpShrrV3YmX1q+ljHIr3Qh3m52a196F7j3o0OEwTCQCiK18w9Pip9j5UV1R0ZRVtvi7lsatXWtET8KOqsgqlpSWGTrZnc3MLa+trCI1OYOHTkvK1D/NvUFdXm/XeVFfUq+kZZX35UgvGQiNobmoyHgkASktL0NzUhMnxEFpbLipfez37VmtvqlDxREJZ3+oLGjpJZrf7+5R1Iu3sR0UVKvYtpqzPVVcZOklm5eVnlfVaPK61H1Wo7e3fyrq4uNjQSTIrc7uV9c8fv7T2owrlZBKKhIQiIaFISCgSEoqEhCJhdB6VaZ4Uj/H88vW4GQnFME+yGyOhOruuU40q7MDy9yi2eZJdWHpFRVdWMRIaVx6z0zzJziwNddA8SWRm6Usf0zzJbiwNxTRPshtLQzHNk+xGfjNBQkKRkFAkJBQJCUVCQpGQUCQkFAkJRUJCkZBQJCQUCQlFQkKRkFAkqEKdPnNKWSc3zN5X4n/Sz5Z+9qOiClXr8SjrxHe9f7c8Tulnq6/N/h+tAbJQHs95Zf1sdPyAZ5r3ZCSkrGtqPAc883CoQnV1+lBYeHJ//XFhEd09fQiHI9ja2jJ4sj3JZBLhcAT+QC8Wlz7vP15UVIgOX5vW3pbeZ6KiWr38s/nb8tGxCTwcGMrVkSzx4P49BPw3tPaguqIAoDcYQIO33vQxDq2h0asdCSAMBQAz0y/QE7iJPJd9j+/Kd6E32I2Zl1M52Y/upe9vchu4Y5LrUE5i39cOoZBQJCQUCep7yh43O72nyhVFQkKRkFAkLA3l5HmSLktDOXmepMvSUE6eJ+myNJST50m6LL/vuVPnSbqM3KC+vaMLy9FVq79tVhoavXg3O236GGZ+PHfiPEmX0Y98cNI8SRfVZ3M4mX1fe4RCQpGQUCQkFAkJRUJCkZBQJCQUCQlFQkKRkFAkJBQJCUVCQpH4A+sFUBwfpVeKAAAAAElFTkSuQmCC;" parent="Dqy6vUOpYm2c9LvL6oSq-39" vertex="1">
+                    <mxGeometry x="328.4" y="321.25" width="14.1" height="12.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="QXZGMtVZFrHZfIXMCrvq-16" value="After submit the request, this booking request form will change to a thank you page. AJAX" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;size=16;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+                    <mxGeometry x="1740" y="970" width="216" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="Dqy6vUOpYm2c9LvL6oSq-42" value="" style="endArrow=classic;html=1;fontSize=20;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.002;entryY=0.833;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="_VZtuzX2ugD6WYGwY0Ov-22" target="Dqy6vUOpYm2c9LvL6oSq-41" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -1231,7 +1258,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="aZtuD4K5TN96j41q5_B5" name="Studio Owner Panel (Request)">
-        <mxGraphModel dx="1517" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="319" dy="387" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -1284,7 +1311,7 @@
         </mxGraphModel>
     </diagram>
     <diagram name="Studio Owner Panel (Studio Info)" id="CpLTrJA6UWhpIvvV0qsS">
-        <mxGraphModel dx="703" dy="419" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1306" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="K5TGRKnv54WYdZr27yc3-0"/>
                 <mxCell id="K5TGRKnv54WYdZr27yc3-1" parent="K5TGRKnv54WYdZr27yc3-0"/>

@@ -183,7 +183,7 @@ window.onload = async () => {
 
       const result = await res.json()
     if(result.message === "success"){
-      window.location.href = "booking-success.html"
+      window.location.href = `booking-success.html?bookingNo=${result.referenceNo}`
     }
     }
 

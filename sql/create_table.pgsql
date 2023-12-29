@@ -58,6 +58,7 @@ CREATE TABLE booking(
     remarks text,
     studio_id integer,
     FOREIGN KEY (studio_id) REFERENCES studio(id),
+    reference_no VARCHAR(255) not null,
     created_at timestamp DEFAULT NOW() not null,
     updated_at timestamp DEFAULT NOW() not null
 );

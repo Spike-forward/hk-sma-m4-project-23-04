@@ -21,28 +21,57 @@ li.nav-item-right:hover{
     cursor: pointer;
 }
 
-
-.message {
-    border: 5px solid;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px 40px;
+.message{
+    padding:50px;
     display: flex;
     flex-direction: column;
+   justify-content: center; /* Horizontally center the content */
+   align-items: center; /* Vertically center the content */
+   text-align: center;
+
+}
+
+
+.message img{
+    height:120px;
+    width:700px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius:10px;
+}
+
+.message h1{
+    font-size: 60px;
+}
+
+.message h5{
+    font-weight: 300;
+}
+
+
+.booking-info{
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-  }
+   flex-wrap: wrap;
+    margin-top: 40px;
+    gap:5px;
+    text-align: center;
+}
 
-i{
-    font-size: 100px;
-    color:#6A76D8;
+.copy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
     
 }
 
-.message a{
+.bi-clipboard{
+    cursor: pointer;
+}
+
+.message button{
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
@@ -52,13 +81,14 @@ i{
     color:white;
     font-weight: bold;
     font-size: 15px;
-}
+    transition: background-color 1s;
+    margin: 0 5px;
+} 
 
-
-.message a:hover{
+.message button:hover{
     background-color: #2e356c;
-    color:white;
     cursor: pointer;
+    transition: background-color 1s;
 }
 
 

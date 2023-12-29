@@ -55,16 +55,16 @@ window.onload = async () => {
  
     dateTimeFilter.addEventListener("submit", async function(event){
          const form = event.target
-         const errorDiv = document.querySelector(".error")
+         const filterErrorDiv = document.querySelector("#date-time-filter .error")
  
          //Return error when user selects an endTime that is earlier than the startTime
          if(form.endTime.value <= form.startTime.value){
            event.preventDefault();
-           errorDiv.classList.add('active')
-           return errorDiv.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select an end time that is later than the start time`;
+           filterErrorDiv.classList.add('active')
+           return filterErrorDiv.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select an end time that is later than the start time`;
          }else{
-           errorDiv.classList.remove('active')
-           errorDiv.innerHTML = ""
+          filterErrorDiv.classList.remove('active')
+          filterErrorDiv.innerHTML = ""
          }
 
          searchParams.set('date',form.date.value);
@@ -72,6 +72,91 @@ window.onload = async () => {
          searchParams.set('endTime',form.endTime.value);
          window.history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
          studioInfoRes = await fetch(`/studio-list/studio-info?date=${form.date.value}&startTime=${form.startTime.value}&endTime=${form.endTime.value}`)
+    })
+
+    const bookingFormErrorDiv = document.querySelectorAll("#booking-record-form .error")
+    const coverDiv = document.querySelector(".cover")
+    const bookingInfoDiv = document.querySelector(".booking-info")
+    const bookingNumberDiv = document.querySelector(".booking-number")
+    const bookedStudioURLDiv = document.querySelector(".booked-studio-url")
+    const bookedStudioNameDiv = document.querySelector(".booked-studio-name")
+    const bookedStudioAddressDiv = document.querySelector(".booked-studio-address")
+    const bookedStudioContactDiv = document.querySelector(".booked-studio-contact")
+    const bookedDateDiv = document.querySelector(".booked-date")
+    const bookedTimeDiv = document.querySelector(".booked-time")
+    const userRemarksDiv = document.querySelector(".user-remarks")
+    const currentStatusDiv = document.querySelector(".current-status")
+
+
+    document
+    .querySelector("#booking-record-form")
+    .addEventListener("submit", async function(event){
+      event.preventDefault();
+      const form = event.target
+
+      const formObject = {
+        whatsappNo: form.whatsapp.value,
+        bookingNo: form.bookingNo.value
+      }
+     
+
+      const res = await fetch('/booking/booking-info',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(formObject)})
+      
+      form.reset();
+      
+      const bookingInfos = await res.json()
+
+      if(bookingInfos.success === true){
+
+
+        bookedTimeDiv.innerText = ""
+        
+        coverDiv.style.visibility = 'hidden'
+        bookingInfoDiv.style.visibility='visible'
+
+
+        bookingFormErrorDiv.forEach((field)=>{
+          field.classList.remove("active")
+          field.innerText = ""
+      })
+        
+
+        bookingNumberDiv.innerText = bookingInfos.bookingInfo["reference_no"]
+        bookedStudioURLDiv.href = `/booking/booking.html?studio_id=${bookingInfos.bookingInfo["studio_id"]}`
+        bookedStudioNameDiv.innerText = bookingInfos.bookingInfo["name"]
+        bookedStudioAddressDiv.innerText = bookingInfos.bookingInfo["address"]
+        bookedStudioContactDiv.innerText = bookingInfos.bookingInfo["contact_no"]
+        bookedDateDiv.innerText = bookingInfos.bookingInfo["date"]
+
+        userRemarksDiv.innerText = bookingInfos.bookingInfo["remarks"]
+        currentStatusDiv.innerText = bookingInfos.bookingInfo["status"]
+
+        for(let timeslot of bookingInfos.bookingDateTime ){
+          timeslot.start_time =  timeslot.start_time.slice(0,-3)
+          timeslot.end_time =  timeslot.end_time.slice(0,-3)
+          bookedTimeDiv.innerText += `  ${timeslot.start_time} - ${timeslot.end_time}  `
+        }
+
+      }else{
+        coverDiv.style.visibility = 'visible'
+        bookingInfoDiv.style.visibility='hidden'
+
+        bookingFormErrorDiv.forEach((field)=>{
+          field.classList.add("active")
+          field.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> ${bookingInfos.message}`
+      })
+      }
+
+      
+      
+      
+
+      
     })
  
 

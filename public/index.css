@@ -197,6 +197,7 @@ li.nav-item-right:hover{
     font-weight: 400;
 }
 
+/* Join Us */
 #join-us{
     display: flex;
     flex-direction: column;
@@ -208,6 +209,7 @@ li.nav-item-right:hover{
     height:200px;
 }
 
+/* FAQ */
 #faq{
     padding:30px;
     text-align: center;
@@ -218,8 +220,82 @@ li.nav-item-right:hover{
     margin-bottom: 20px;
 }
 
+/* Booking Record Checker */
+#record-checker{
+    padding:10px;
+}
+
+#record-checker h2 {
+   text-align: center;
+   margin-top: 20px;
+}
+
+#record-checker .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#booking-record-form .form-floating{
+    margin: 0px 20px 20px 0px;
+}
+
+.cover{
+    background-image: url("images/booking-record-cover.jpeg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    z-index: 2;
+}
 
 
+#record-checker .booking-info{
+    margin:20px 0px;
+    border: 1px solid rgba(128, 128, 128, 0.155);
+    padding:20px 50px;
+    position: relative;
+    visibility:hidden;
+}
+
+.booking-info p{
+    font-weight: bold;
+}
+
+.booking-info span{
+    font-weight: 400;
+}
+
+.booking-status{
+    position: absolute;
+    bottom:-10px;
+    right:10px;
+}
+
+#booking-record-form input[type="submit"]{
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border:rgba(128, 128, 128, 0.193) solid 2px;
+    padding:5px;
+    background-color: #6A76D8;
+    color:white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 1s;
+    margin: 0 5px;
+    padding:0px 50px;
+} 
+
+#booking-record-form input[type="submit"]:hover{
+    background-color: #2e356c;
+    cursor: pointer;
+    transition: background-color 1s;
+}
+
+
+
+
+/* Footer */
 #footer{
     padding:50px;
     background-color: #dde1ff;
@@ -239,24 +315,15 @@ li.nav-item-right:hover{
     margin-top: 20px;
 }
 
-/* @media only screen and (max-width: 990px){
-    .filter-container{
-        margin: 10px 90px 0px 90px;
-        padding: 30px 40px;
+@media only screen and (max-width: 991px){
+    #record-checker{
+        padding:30px;
     }
 
-    .filter1 .form-floating{
-        margin-bottom: 10px;
+    #booking-record-form p{
+        text-align: center;
     }
-
-    .filter1 input[type="submit"]{
-        margin-top:0px;
-    }
-
-    
-
-} */
-
+}
 
 
 @media only screen and (max-width: 990px){

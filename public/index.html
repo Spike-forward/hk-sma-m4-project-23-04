@@ -42,6 +42,11 @@
               <a class="nav-link" href="#faq">FAQs</a>
             </li>
 
+
+            <li class="nav-item">
+              <a class="nav-link" href="#record-checker">Check Booking Record</a>
+            </li>
+
             
           </ul>
 
@@ -56,21 +61,19 @@
       </div>
     </nav>
 
-
-    <div class="top-container">
+  <!-- Banner & Filter -->
+  <div class="top-container">
   <!-- Banner -->
-
   <div class="banner">
       <img src="images/platform_homepage_banner.jpg" class="d-block w-100" alt="...">
       <h2>Find your inner peace <br> @ Studio Hub</h2>
-      </div>
-  </div>
+    </div>
+  
 
    <!-- All Filters -->
-
    <div class="filter-button">
     <button><i class="bi bi-funnel"></i>Filter</button>
-  </div>
+     </div>
 
   <div class="filter-container">
 
@@ -141,13 +144,8 @@
         <input type="submit" value="Search">
       </form>
     </div>
-  </div>
-</div>
-
-
-
-
- 
+     </div>
+   </div>
   
   <!-- All Studio Card -->
   <div class="container-fluid studio-list" id="booking">
@@ -156,7 +154,6 @@
     <div class="button">
       <a href="/all-studios/all-studios.html"><button>See All Studios</button></a>
     </div>
-    
   </div>
 
   <!-- Join Us -->
@@ -199,6 +196,65 @@
           </div>
         </div>
   </div>
+
+  <!-- Check Booking Status -->
+  <div id="record-checker">
+      <h2>Check Your Booking Record</h2>
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-lg-5">
+
+            <form id="booking-record-form">
+              <p>Fill in your booking whatsapp number and booking reference number</p>
+              <div class="form-floating">
+                <input type="tel" class="form-control" id="whatsapp" name="whatsapp"  pattern="[0-9]{8}" placeholder="Whatsapp">
+                <label for="whatsapp">Whatsapp</label>
+                <div class="error"></div>
+              </div>
+
+              <div class="form-floating">
+                <input type="text"class="form-control" id="bookingNo" placeholder="Booking Number" required>
+                <label for="bookingNo">Booking Reference Number</label>
+                <div class="error"></div>
+              </div>
+
+              <input type="submit" value="Submit">
+            </form>
+
+          </div>
+
+          <div class="col-lg-5">
+            <div class="cover">
+             
+           
+            <div class="booking-info">
+              <div class="reference-number">
+                <p>Booking Reference Number: <span class="booking-number"></span></p>
+              </div>
+
+              <div class="booked-studio-info">
+                  <p><i class="bi bi-shop"></i> Studio: <span class="booked-studio-name"></span> (<a target=”_blank” href="" class="booked-studio-url">Link</a>)</p>
+                  <p><i class="bi bi-pin-map"></i> Studio Address: <span class="booked-studio-address"></span></p>
+                  <p><i class="bi bi-telephone"></i> Studio Contact: <span class="booked-studio-contact"></span></p>
+                  <p><i class="bi bi-calendar2-event"></i> Booked Date: <span class="booked-date"></span></p>
+                  <p><i class="bi bi-clock"></i> Booked Time: <span class="booked-time"></span></p>
+                  <p><i class="bi bi-journal"></i> Your Remarks: <span class="user-remarks"></span></p>
+              </div>
+
+              <div class="booking-status">
+                <p>Status: <span class="current-status">Pending</span></p>
+              </div>
+             
+
+            </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
 
 
 <!-- footer -->
