@@ -11,8 +11,9 @@ registerRoutes.post('/',ownerRegister)
 
 
 async function ownerRegister(req:Request, res:Response){
-    console.log(req.body)
-    const {firstName, lastName, email,password}  = req.body
+    //console.log(req.body)
+    const {firstName, lastName, email, password}  = req.body
+    //console.log(firstName, lastName, email, password)
 
     const result = await client.query(`SELECT email FROM owner`)
     const ownerEmailList = result.rows

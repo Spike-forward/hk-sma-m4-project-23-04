@@ -22,7 +22,7 @@ async function getStudioInfo(req:Request, res:Response){
             district = "null"
         }
 
-        console.log(typeof district, district)
+        //console.log(typeof district, district)
    
         let sql= `
         SELECT studio.icon,studio.name,studio.district,studio.address,studio.id,studio_photo.filename 
@@ -30,7 +30,7 @@ async function getStudioInfo(req:Request, res:Response){
         left outer join studio_photo on studio.id = studio_photo.studio_id 
         WHERE studio_photo.cover_photo = true AND
         studio.name NOT IN ($1)`
-        console.log(sql)
+        //console.log(sql)
 
         let params:any[] = ['']
 
@@ -52,8 +52,8 @@ async function getStudioInfo(req:Request, res:Response){
         }
 
         sql += ` ORDER BY RANDOM()`
-        console.log(params)
-        console.log(sql)
+        //console.log(params)
+        //console.log(sql)
 
         let result = await client.query(sql,params)
 

@@ -4,17 +4,20 @@ async function loadPage() {
     //Fetch From API
     const studioIconRes = await fetch('/owner-booking/studio-icon')
     const ownerNameRes = await fetch('/owner-booking/owner-name')
+    const studioInfoRes = await fetch('/owner-studio/studio-info')
     const studioRequestsRes = await fetch('/owner-booking/requests')
 
     //Data get from API
     const studioIcon = await studioIconRes.json()
     const ownerName = await ownerNameRes.json()
+    const studioInfo = await studioInfoRes.json()
     const studioRequests = await studioRequestsRes.json()
 
     //DOM DIV
     const studioIconDiv = document.querySelector('#owner-icon')
     const ownerNameDiv = document.querySelector('.hello')
     const newBookingDiv = document.querySelector(".new-booking")
+    const serverMsg = document.querySelector(".server-msg")
     const studioPendingReq = document.querySelector('#pending-tab-pane')
     const studioPaymentReq = document.querySelector('#payment-tab-pane')
     const studioApprovedReq = document.querySelector('#approved-tab-pane')
@@ -43,6 +46,13 @@ async function loadPage() {
     } else {
         newBookingDiv.innerHTML = `
         There are ${pendingReqNo} new bookings pending recently`
+    }
+    if (studioInfo.name === '' || studioInfo.address === '' || studioInfo.contact_no === '' || studioInfo.price === '' || studioInfo.photos.length === 0){
+        serverMsg.innerHTML = `Missing studio information!`
+        serverMsg.classList.add('warning')
+    } else if (!studioInfo.photos.some((photo) => photo.cover_photo === true)){
+        serverMsg.innerHTML = `Missing studio cover photo!`
+        serverMsg.classList.add('warning')
     }
 
         //Booking Requests
@@ -149,7 +159,7 @@ async function loadPage() {
     const pendingReqReject = document.querySelectorAll('.pendingReject')
     const paymentReqConfirm = document.querySelectorAll('.paymentConfirm')
     const paymentReqReject = document.querySelectorAll('.paymentReject')
-    const serverMsg = document.querySelector(".server-msg")
+    //const serverMsg = document.querySelector(".server-msg")
     
     pendingReqAccept.forEach((req, index)=>{
         const ReqID = document.querySelectorAll('.request:has(.pendingAccept)')[index].classList[1].slice(3)

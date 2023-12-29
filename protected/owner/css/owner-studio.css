@@ -9,14 +9,18 @@
     justify-content: center;
 }
 
+#profile #owner-icon img{
+    width: 300px;
+    height: 300px;
+}
+
 #message{
     text-align: center;
     padding: 30px 0;
 }
 
 .server-msg{
-    color: greenyellow;
-    font-weight: 700;
+    color: #00ff00;
 }
 
 #panel{
@@ -85,10 +89,20 @@
 }
 
 #panel #studio .info > form button[type="submit"]{
-    margin-top: 50px;
+    margin-top: 40px;
+}
+
+.legend{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 /* Status */
 .chosen{
     border: 1px solid #ff0000 !important;
+}
+
+.warning{
+    color: #ff0000 !important;
 }

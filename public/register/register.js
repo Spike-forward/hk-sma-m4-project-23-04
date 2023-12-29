@@ -6,6 +6,13 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm_password');
 
+const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
 
 document
     .querySelector("#register-form")
@@ -39,7 +46,24 @@ document
     const emailErrorContainer = document.querySelector(".input-control-email .error")
 
     if(res.status=== 200){
-        window.location.href = "/owner/owner-studio.html"
+        swalWithBootstrapButtons.fire({
+            title: "Registration succeed!",
+            text: "You can choose to login or go back to main page.",
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonText: "Login",
+            cancelButtonText: "Go Back to Main Page"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/owner/owner-studio.html"
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+                window.location.href = "/index.html"
+                }
+          });
+        
     }else{
         emailErrorContainer.classList.add('active')
         emailErrorContainer.innerText = `${result.message}`

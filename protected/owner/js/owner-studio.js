@@ -10,10 +10,14 @@ async function loadPage () {
     const checkStudioIDRes = await fetch(`/owner-studio/check-new-studio/`)
     const checkStudioID = await checkStudioIDRes.json()
     
+    const serverMsg = document.querySelector(".server-msg")
+
     if (checkStudioID.error){
         const res = await fetch('/owner-studio/studio-info', {
             method: 'POST',
         })
+        serverMsg.innerHTML=`Missing studio information!`
+        serverMsg.classList.add("warning")
         await loadPage();
     } 
     else if(checkStudioID.success){
@@ -30,25 +34,26 @@ async function loadPage () {
         const studioContactDiv = document.querySelector('.studio-contactNo')
         const studioPriceDiv = document.querySelector('.studio-price')
         const studioDescriptionDiv = document.querySelector('.studio-description')
+        const studioCoverPhotoHeader = document.querySelector('.coverPhoto h6')
         const studioPhotosDiv = document.querySelector('#photos')
         const studioEquipDiv = document.querySelector('.equipments')
         
         studioIconDiv.innerHTML = `<img src="../uploads/studio_icon/${studioIcon.icon}" alt="owner's icon">`
         studioNameDiv.innerHTML = `
             <input required type="text" class="form-control" id="name" value="${studioInfo.name}" name="name">
-            <label for="name">Studio Name</label>`
+            <label for="name">Studio Name*</label>`
     
         studioAddressDiv.innerHTML = `
             <input required type="text" class="form-control" id="address" value="${studioInfo.address}" name="address">
-            <label for="address">Address</label>`
+            <label for="address">Address*</label>`
         studioContactDiv.innerHTML = `
             <input required type="tel" class="form-control" id="contactNo" value="${studioInfo.contact_no}" name="contact_no">
-            <label for="contactNo">Contact Number</label>`
+            <label for="contactNo">Contact Number*</label>`
 
         // Caution: If textarea is added by editing innerHTML, whitespace may be added if there is a line spacing
         studioPriceDiv.innerHTML = `
             <textarea required class="form-control" name="price" id="price" style="height: 150px; width: 40%">${studioInfo.price}</textarea>
-            <label for="price">Price</label>`
+            <label for="price">Price*</label>`
         studioDescriptionDiv.innerHTML = `
             <textarea class="form-control" name="description" id="description" style="height: 150px; width: 40%">${studioInfo.description}</textarea>
             <label for="description">Description</label>`
@@ -65,7 +70,7 @@ async function loadPage () {
         if (document.querySelector(`#closeTime option[value='${studioInfo.close_time}']`)){
             document.querySelector(`#closeTime option[value='${studioInfo.close_time}']`).setAttribute('selected', true);
         }
-    
+        
         studioPhotosDiv.innerHTML = ``
         for (let photo of studioInfo.photos) {
             studioPhotosDiv.innerHTML+=`
@@ -77,6 +82,14 @@ async function loadPage () {
             if (photo.cover_photo){
                 studioPhotosDiv.querySelector(`img[src="../uploads/studio_photo/${photo.filename}"]`).classList.toggle('chosen')
             }
+        }
+
+        if (studioPhotosDiv.querySelector('img')){
+            studioCoverPhotoHeader.innerText = "Choose 1 of the photos uploaded as cover photo*"
+        }
+        if (!studioPhotosDiv.querySelector('.chosen')){
+            serverMsg.innerHTML = `Missing cover photo!`
+            serverMsg.classList.add('warning')
         }
         
         const photos = studioPhotosDiv.querySelectorAll('img')
@@ -105,13 +118,17 @@ async function loadPage () {
         })
         studioEquipDiv.innerHTML = ``
         for (let item of studioEquip){
-            console.log(item)
+            //console.log(item)
             studioEquipDiv.innerHTML += `
             <label for="${camelCasing(item.items)}"><input type="checkbox" name="item${studioEquip.indexOf(item)+1}" value="${item.items}" id="${camelCasing(item.items)}">${item.items}</label>
             `
         }
         for (let item of studioInfo.equipment){
             document.querySelector(`input[value="${item}"]`).checked = true
+        }
+        if (studioInfo.name === '' || studioInfo.address === '' || studioInfo.contact_no === '' || studioInfo.price === '' || studioInfo.photos.length === 0){
+            serverMsg.innerHTML = `Missing studio information!`
+            serverMsg.classList.add('warning')
         }
     }
 }
@@ -120,18 +137,47 @@ document
 	.querySelector('.studio-form')
 	.addEventListener('submit', async (event) => {
 		event.preventDefault() // To prevent the form from submitting synchronously
-        const serverMsg = document.querySelector(".server-msg")
-		const form = event.target
+        
+        const form = event.target
         console.log(form)
-		//... create your form object with the form inputs
-		const formData = new FormData(form)
+        //... create your form object with the form inputs
+        const formData = new FormData(form)
         
         const res = await fetch('/owner-studio/studio-info', {
             method: 'PUT',
             body: formData,
         })
-		serverMsg.innerHTML = `Studio information updated!`
-		await loadPage()
+        const serverMsg = document.querySelector(".server-msg")
+        if (document.querySelector(".chosen")){
+            Swal.fire({
+                icon: "success",
+                title: "Studio Information updated!",
+                text: "Updated information will be displayed on the website!"
+            }).then((result)=>{
+                if (result.isConfirmed){
+                    serverMsg.innerHTML = `Studio information updated!`
+                    if (serverMsg.classList.contains('warning')){
+                        serverMsg.classList.remove('warning')
+                    }
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: "warning",
+                title: "Missing Cover Photo!",
+                text: "You have to upload at least 1 photo and choose one as your cover photo (with red border surrounded)!",
+                imageUrl: "images/cover-photo-example.jpeg",
+                imageHeight: 500,
+                imageAlt: "Cover photo example"
+            })
+            .then((result)=>{
+                if (result.isConfirmed){
+                    serverMsg.innerHTML = `Studio information updated! Missing cover photo!`
+                    serverMsg.classList.add('warning')
+                }
+            })
+        }
+        await loadPage()
 	})
 
 // Useful function
