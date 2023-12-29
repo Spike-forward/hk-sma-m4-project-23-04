@@ -5,6 +5,8 @@ const lastName = document.getElementById('last_name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm_password');
+const emailErrorContainer = document.querySelector(".input-control-email .error");
+const emailInputDiv = document.querySelector(".input-control-email");
 
 const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -17,12 +19,24 @@ const swalWithBootstrapButtons = Swal.mixin({
 document
     .querySelector("#register-form")
     .addEventListener('submit', async(event) => {
+       let formError = false;
         event.preventDefault();
+        
         validateInputs();
+        const inputControlDiv = document.querySelectorAll('.input-control')
+
+        inputControlDiv.forEach((field) => {
+            if(field.classList.contains("error")){
+                formError = true
+            }
+        })
+
+        if(formError){
+            return;
+        }
 
         const form = event.target;
 
-   
 
         let formObject = {
             firstName: form.first_name.value,
@@ -30,7 +44,6 @@ document
             email: form.email.value,
             password: form.password.value
         }
-
    
 
     const res = await fetch('/register', {
@@ -43,9 +56,7 @@ document
 
     const result = await res.json()
 
-    const emailErrorContainer = document.querySelector(".input-control-email .error")
-
-    if(res.status=== 200){
+    if(res.status === 200){
         swalWithBootstrapButtons.fire({
             title: "Registration succeed!",
             text: "You can choose to login or go back to main page.",
@@ -65,14 +76,12 @@ document
           });
         
     }else{
+        emailInputDiv.classList.add('error')
         emailErrorContainer.classList.add('active')
         emailErrorContainer.innerText = `${result.message}`
     }
 
    
-
-
-
 });
 
 
